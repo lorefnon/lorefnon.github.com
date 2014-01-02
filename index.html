@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<section id="posts">
+  <div class="content">
+    <table id="toc">
+      {% for post in site.posts %}
+      <tr>
+        <td> <div class='date'> {{ post.date | date_to_string }} </div> </td>
+        <td> <a href="{{ post.url }}">{{ post.title }}</a> </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</section>

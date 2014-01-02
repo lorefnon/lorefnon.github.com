@@ -1,0 +1,10 @@
+name: Icicles of Thought
+markdown: redcarpet
+pygments: true
+post:
+    template: _layouts/post.html
+    extension: md
+page:
+    template: _layouts/default.html
+    extension: md
+editor: subl

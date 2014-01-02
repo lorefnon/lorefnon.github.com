@@ -1,0 +1,253 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 2711726, 2013-12-19T20:42:19-0500
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: Museo Slab 500 by exljbris
+ * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/500/
+ * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
+ * Licensed pageviews: Unlimited
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2711726
+ *
+ * © 2013 MyFonts Inc
+*/
+
+@font-face {font-family: 'MuseoSlab-500';src: url('webfonts/2960AE_0_0.eot');src: url('webfonts/2960AE_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2960AE_0_0.woff') format('woff'),url('webfonts/2960AE_0_0.ttf') format('truetype');}
+
+/* ------------------------------------------------------------- */
+
+body {
+    /*background: #1F4E66;*/
+    background: #EEEEEE;
+    font-size: 100%;
+    /*border-top: 3px solid #2980B2;*/
+    border-top: 3px solid black;
+}
+body * {
+    font-family: 'Ubuntu', sans-serif;
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+h1, h2, h3 {
+    font-weight: 100;
+    font-family: 'MuseoSlab-500', serif;
+}
+/*body > header {
+    margin-top: 1em;
+}*/
+/*body > header, body > footer {
+    background: #14222B;
+    box-shadow: inset 0 0 2px 3px rgba(0,0,0,0.5);
+}*/
+body > footer, body > header {
+    background: #323234;
+    text-align: center;
+    box-shadow: inset 0 0 2px 3px rgba(0,0,0,0.4);
+}
+body > header {
+    padding-top: 100px;
+}
+body > nav {
+    background:#DFDFDF;
+    height: 60px;
+    border-bottom: 2px solid #C8C8C8;
+    background-image: linear-gradient(to bottom, #EEEEEE 0%, #DFDFDF 100%);
+}
+body > nav ul {
+    margin-left : auto;
+    margin-right: auto;
+    display: block;
+    width: 80%;
+}
+body > nav li {
+    float: left;
+    width: 25%;
+}
+body > nav li a{
+    display: block;
+    padding: 5px;
+    line-height: 50px;
+    color: #0095DA;
+    font-family: 'MuseoSlab-500', serif;
+}
+body > nav img {
+    height: 26px;
+    width: 26px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+#social {
+    float: right;
+}
+#social li {
+    float: left;
+    margin-left: 10px;
+}
+#social img {
+    height: 20px;
+    width: 20px;
+}
+body > * > .inner {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3em 1em;
+}
+body > header > .inner {
+    padding-bottom: 0.2em;
+}
+body > header h1 {
+    font-size: 2em;
+    color: white;
+    padding-bottom: 0.4em;
+}
+body > header h2 {
+    font-size: 1em;
+    color: #2980B2;
+}
+#content-wrapper {
+    padding: 1em 0;
+    box-shadow: 0 0 2px 2px rgba(0,0,0,0.1) inset;
+}
+#content-wrapper > .inner {
+    min-height: 500px;
+    background: #FBFBFB;
+    margin: 0 auto;
+    border: #CFCFCF 1px solid;
+    border-radius: 4px;
+    /*box-shadow: 0 1px 2px 3px rgba(0,0,0,0.1);*/
+}
+footer {
+    background: #14222B;
+}
+footer a {
+    color: white;
+}
+footer p {
+    color: #2980B2;
+    padding: 0.4em 0;
+    font-size: 0.8em;
+}
+
+#content-wrapper h2 {
+    font-size: 1.6em;
+    color: #409EFF;
+    display: block;
+    border-bottom: 2px solid #409EFF;
+    padding-bottom: 0.2em;
+    margin: 1em 1.5em 1em 1.5em;
+}
+#content-wrapper h3 {
+    font-size: 1.4em;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 0.6em;
+}
+#content-wrapper .content {
+    padding-left: 5em;
+    margin-bottom: 6em;
+}
+#toc td {
+    padding: 5px;
+}
+.date {
+    padding: 0 15px;
+    border: 2px solid  #0095DA;
+    line-height: 30px;
+    border-radius: 15px;
+    font-size: 11px;
+}
+#toc a {
+    color: #0095DA;
+}
+
+.content > .date {
+    float: left;
+}
+.post {
+    padding-top: 45px;
+}
+
+.post p {
+    padding: 10px 0;
+}
+
+.post h1, .post h2 {
+    padding: 20px 0;
+    font-size: 21px;
+    color: #409EFF;
+}
+.post h1 {
+    text-indent: -40px;
+}
+
+p {
+    line-height: 1.5em;
+}
+pre {
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+    padding: 15px;
+}
+
+code, code * {
+    font-family: 'Ubuntu Mono', sans-serif;
+}
