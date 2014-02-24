@@ -322,7 +322,7 @@ For intelligent completion robe can be integrated with [company mode](http://com
 Now all you have to do is hit `robe-start` when you navigate into your project. After that at any point
 if you trigger `company-robe` you should be greeted with an intellisense like method definitions.
 
-Completion will start automatically after you type a few letters. Use M-n, M-p, <tab> and <return> to complete. Search through the completions with C-s, C-r and C-o. Even the documentations are available right from the editor (Press F1 at any menu entry).
+Completion will start automatically after you type a few letters. Use M-n, M-p, &lt;tab&gt; and &lt;return&gt; to complete. Search through the completions with C-s, C-r and C-o. Even the documentations are available right from the editor (Press F1 at any menu entry).
 
 ![Emacs robe completions](/images/emacs-robe-completions.png)
 
