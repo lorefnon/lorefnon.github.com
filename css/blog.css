@@ -293,3 +293,9 @@ p code {
     }
     #toc { width: 90%; }
 }
+
+blockquote {
+border-left: 2px solid silver;
+padding-left: 10px;
+background: white;
+}
