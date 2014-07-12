@@ -53,16 +53,16 @@ body {
 }
 body * { font-family: 'Open Sans', sans-serif; box-sizing: border-box; line-height: 20px; font-size: 13px;  }
 a { cursor: pointer; text-decoration: none; }
-.site-footer * , .site-banner *, .blog-title, .blog-post h1 { font-family: 'Oswald'; }
+.site-footer * , .site-banner *, .blog-title, .blog-post h1, .site-header * { font-family: 'Oswald'; }
 .blog-title { line-height: 50px; }
 .blog-post-title { color: #3176C3; }
 .site-banner { background: #2589D4; margin: 2px 0 0 0; color: white; padding: 100px 10px;}
 .site-banner { background-image: url('/images/header-bg.jpg') }
 .site-banner h1 { font-size: 45px; text-align: center; margin-bottom: 50px; color: white; }
 .blog-abstract { color: #A1E0FF; text-transform: capitalize; text-align: center; font-weight: lighter; font-size: 20px; line-height: 35px; }
-.site-author-link { float: right; }
+.site-author-link { float: right; color: white; }
 .site-header.isStuck { visibility: visible; }
-.site-header { background: #8DC2F8; height: 30px; border-top: 3px solid white; border-bottom: 3px solid white; width: 100%; visibility: hidden; }
+.site-header { background: #8DC2F8; height: 36px; border-top: 3px solid white; border-bottom: 3px solid white; width: 100%; visibility: hidden; }
 .site-title li { float: left; display: block; color: white; line-height: 30px; }
 .site-title li .arrow { float: right; height: 0; width: 0; margin-left: 15px; }
 .site-title-code { background: #193153;  padding-left: 15px; }
@@ -71,7 +71,7 @@ a { cursor: pointer; text-decoration: none; }
 .site-title-art .arrow { border: 15px solid #2589D4; border-left-color: #375E7F;}
 .site-title-web { background: #2589D4; }
 .site-title-web .arrow { border: 15px solid #8DC2F8; border-left-color:  #2589D4;}
-.site-author-link { line-height: 30px; color: #193153; text-decoration: none; padding-right: 15px; }
+.site-author-link { line-height: 30px; text-decoration: none; padding-right: 15px; }
 .site-body .inner, .site-footer .inner { width: 80%; max-width: 900px; margin-left: auto; margin-right: auto; }
 .site-body {  padding: 50px 0;}
 .blog-title { font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid black; margin-bottom: 10px; text-align: center; font-size: 35px; }
@@ -84,6 +84,7 @@ a { cursor: pointer; text-decoration: none; }
 .site-footer { background: #494E52; padding: 100px 0; color: gray; border-top: 2px solid black; }
 .site-footer p { font-weight: lighter; padding: 10px 0; text-align: center; }
 .site-footer p a { text-decoration: none; color: silver; }
+.site-footer * { font-size: 20px; }
 .blog-post code { padding: 10px; }
 .blog-post code, code * { font-family: monospace !important; }
 .blog-post * { padding: 10px 0; line-height: 20px; font-size: 13px; }

@@ -17,6 +17,14 @@
                 primary focus being on Web centric platforms and technologies.
             </div>
         </header>
+        <header class='site-header'>
+            <a href="https://twitter.com/lorefnon" class="site-author-link">@lorefnon</a>
+            <ul class='site-title'>
+                <li class="site-title-code"><div class="arrow"></div>Code </li>
+                <li class="site-title-art"><div class="arrow"></div>Art</li>
+                <li class="site-title-web"><div class="arrow"></div>Web</li>
+            </ul>
+        </header>
         <div class="site-body">
             <div class="inner">
                 {{ content }}
@@ -48,5 +56,14 @@
             ga('create', 'UA-47274059-1', 'lorefnon.me');
             ga('send', 'pageview');
         </script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/stickUp.min.js"></script>
+        <script>
+            $(function(){
+              setTimeout(function(){
+                $(".site-header").stickUp();
+              }, 100)
+            });
+        </script>        
     </body>
 </html>
