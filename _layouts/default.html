@@ -1,86 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title> Code.Art.Web </title>
-    <meta name="viewport" content="width=device-width">
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu' rel='stylesheet' type='text/css'>
-    <!-- syntax highlighting CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title> Code.Art.Web </title>
+        <meta name="viewport" content="width=device-width">
+        <link href='http://fonts.googleapis.com/css?family=Oswald:400,300|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/blog.css">
+    </head>
+    <body>
+        <header class="site-banner">
+            <a href="http://lorefnon.me"><h1 class="site-main-title"> Code . Art . Web </h1></a>
+            <div class="blog-abstract">
+                Notes on Software Craftsmanship, Architecture Design and the Art of Building beautiful abstractions, <br>
+                primary focus being on Web centric platforms and technologies.
+            </div>
+        </header>
+        <div class="site-body">
+            <div class="inner">
+                {{ content }}
+            </div>
+        </div>
+        <footer class="site-footer">
+            <div class="inner">
+                <p>&copy; 2013 - 2014 Gaurab Paul </p>
+                <p>Code licensed under the
+                    <a href="http://opensource.org/licenses/MIT" target="_blank">The
+                        MIT License</a>. Content and Artwork licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>.
+                </p>
+                <p>
+                    The opinions expressed herein are my personal viewpoints  and may
+                    not be taken as professional recommendations from any of my previous or
+                    current employers.
+                </p>
+                <p>
+                    Site is powered by <a href="http://jekyllrb.com/">Jekyll</a> and graciously hosted by <a href="https://github.com">Github</a>
+                </p>
+            </div>
+        </footer>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/blog.css">
-
-  </head>
-  <body>
-    <header>
-
-      <div class="inner">
-        <!--
-        <ul id="social">
-          <li>
-            <a href="http://www.github.com/figaeus">
-              <img src="/images/github.png">
-            </a>
-          </li>
-          <li>
-            <a href="http://www.twitter.com/figaeus">
-              <img src="/images/twitter.png">
-            </a>
-          </li>
-          <li>
-            <a href="http://www.twitter.com/figaeus">
-              <img src="/images/linkedin.png">
-            </a>
-          </li>
-        </ul>
-      -->
-
-        <!--<h1> Gaurab Paul </h1>-->
-        <h1> Code. Art. Web </h1>
-      </div>
-
-    </header>
-      <nav>
-        <ul>
-          <li> <a href="/"> <img src="/images/blog.png"> <span>Blog</span> </a> </li>
-          <li> <a href="#"> <img src="/images/bookmarks.png"> <span> Bookmarks</span> </a> </li>
-          <li> <a href="http://github.com/lorefnon"> <img src="/images/projects.png"> <span>Projects</span> </a></li>
-          <li> <a href="/about.html"> <img src="/images/about.png">  <span>About</span> </a></li>
-        </ul>
-      </nav>
-    <div id="content-wrapper">
-      <div class="inner">
-        {{ content }}
-      </div>
-    </div>
-    <footer>
-      <div class="inner">
-        <p>&copy; 2013 - 2014 Gaurab Paul </p>
-        <p>Code licensed under the
-        <a href="http://opensource.org/licenses/MIT" target="_blank">The
-          MIT License</a>. Content and Artwork licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>.
-      </p>
-        <p>
-        The opinions expressed herein are my personal viewpoints  and may
-        not be taken as professional recommendations from any of my previous or
-        current employers.
-        </p>
-        <p>
-          Site is powered by <a href="http://jekyllrb.com/">Jekyll</a>. Fonts used are <a href="http://font.ubuntu.com/">Ubuntu</a> and <a href="http://www.myfonts.com/fonts/exljbris/museo-slab/"> Museo Slab</a>. Icons used are a part of <a href="http://icons8.com/">Metro Style icon set</a> by Visual Pharm.
-        </p>
-      </div>
-    </footer>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-47274059-1', 'lorefnon.me');
-        ga('send', 'pageview');
-
-    </script>
-  </body>
+            ga('create', 'UA-47274059-1', 'lorefnon.me');
+            ga('send', 'pageview');
+        </script>
+    </body>
 </html>

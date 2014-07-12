@@ -1,11 +1,11 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
+<a href="{{post.url}}"><h2 class="blog-title blog-post-title">{{ page.title }}</h2></a>
 <div class="content">
-<p class="date">{{ page.date | date_to_string }}</p>
+<p class="blog-date">{{ page.date | date_to_string }}</p>
 
-<div class="post">
+<div class="blog-post">
 {{ content }}
 </div>
 

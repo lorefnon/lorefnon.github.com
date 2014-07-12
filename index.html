@@ -2,14 +2,15 @@
 layout: default
 ---
 
-<section id="posts">
-    <div class="content">
-        <div id="toc">
-            <h1> Posts </h1>
-            {% for post in site.posts %}
-            <div class='date'> {{ post.date | date_to_string }} </div>
-            <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
-            {% endfor %}
-        </div>
-    </div>
-</section>
+<div class="blog-index">
+    <h1 class="blog-title blog-index-title"> Posts </h1>
+    <ul class="blog-post-list">
+        {% for post in site.posts %}
+        <li class="blog-post-item">
+            <div class="post-pre-meta">
+                <span class="post-pub-meta">{{ post.date | date_to_string }} </span>
+            </div>
+            <a href="{{ post.url }}"> <h2> {{ post.title }} <h2> </a></li>
+        {% endfor %}
+     </ul>
+</div>

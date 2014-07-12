@@ -46,256 +46,58 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-/**
- * @license
- * MyFonts Webfont Build ID 2711726, 2013-12-19T20:42:19-0500
- *
- * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are
- * explicitly restricted from using the Licensed Webfonts(s).
- *
- * You may obtain a valid license at the URLs below.
- *
- * Webfont: Museo Slab 500 by exljbris
- * URL: http://www.myfonts.com/fonts/exljbris/museo-slab/500/
- * Copyright: Copyright (c) 2009 by Jos Buivenga. All rights reserved.
- * Licensed pageviews: Unlimited
- *
- *
- * License: http://www.myfonts.com/viewlicense?type=web&buildid=2711726
- *
- * © 2013 MyFonts Inc
-*/
-
-@font-face {font-family: 'MuseoSlab-500';src: url('webfonts/2960AE_0_0.eot');src: url('webfonts/2960AE_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/2960AE_0_0.woff') format('woff'),url('webfonts/2960AE_0_0.ttf') format('truetype');}
-
-/* ------------------------------------------------------------- */
-
 body {
-    /*background: #1F4E66;*/
-    background: #EEEEEE;
+    background: white;
     font-size: 100%;
-    /*border-top: 3px solid #2980B2;*/
     border-top: 3px solid black;
 }
-body * {
-    font-family: 'Ubuntu', sans-serif;
-}
-a {
-    cursor: pointer;
-    text-decoration: none;
-}
-h1, h2, h3 {
-    font-weight: 100;
-    font-family: 'MuseoSlab-500', serif;
-}
-/*body > header {
-    margin-top: 1em;
-}*/
-/*body > header, body > footer {
-    background: #14222B;
-    box-shadow: inset 0 0 2px 3px rgba(0,0,0,0.5);
-}*/
-body > footer, body > header {
-    background: #323234;
-    text-align: center;
-    box-shadow: inset 0 0 2px 3px rgba(0,0,0,0.4);
-}
-body > header {
-    padding-top: 100px;
-}
-body > nav {
-    background:#DFDFDF;
-    height: 60px;
-    border-bottom: 2px solid #C8C8C8;
-    background-image: linear-gradient(to bottom, #EEEEEE 0%, #DFDFDF 100%);
-}
-body > nav ul {
-    margin-left : auto;
-    margin-right: auto;
-    display: block;
-    width: 80%;
-}
-body > nav li {
-    float: left;
-    width: 25%;
-    text-align: center;
-}
-body > nav li a{
-    display: block;
-    color: #0095DA;
-    font-family: 'MuseoSlab-500', serif;
-}
-body > nav li a {
-    line-height: 60px;
-}
-body > nav img {
-    height: 26px;
-    width: 26px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
-#social {
-    float: right;
-}
-#social li {
-    float: left;
-    margin-left: 10px;
-}
-#social img {
-    height: 20px;
-    width: 20px;
-}
-body > * > .inner {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 3em 2em;
-}
-body > header > .inner {
-    padding-bottom: 0.2em;
-}
-body > header h1 {
-    font-size: 2em;
-    color: white;
-    padding-bottom: 0.4em;
-}
-body > header h2 {
-    font-size: 1em;
-    color: #2980B2;
-}
-#content-wrapper {
-    padding: 1em 0;
-    box-shadow: 0 0 2px 2px rgba(0,0,0,0.1) inset;
-    width: 100%;
-    overflow-x: auto;
-}
-#content-wrapper > .inner {
-    min-height: 500px;
-    background: #FBFBFB;
-    margin: 0 auto;
-    border: #CFCFCF 1px solid;
-    border-radius: 4px;
-    /*box-shadow: 0 1px 2px 3px rgba(0,0,0,0.1);*/
-}
-footer {
-    background: #14222B;
-}
-footer a {
-    color: white;
-}
-footer p {
-    color: #2980B2;
-    padding: 0.4em 0;
-    font-size: 0.8em;
-}
+body * { font-family: 'Open Sans', sans-serif; box-sizing: border-box; line-height: 20px; font-size: 13px;  }
+a { cursor: pointer; text-decoration: none; }
+.site-footer * , .site-banner *, .blog-title, .blog-post h1 { font-family: 'Oswald'; }
+.blog-title { line-height: 50px; }
+.blog-post-title { color: #3176C3; }
+.site-banner { background: #2589D4; margin: 2px 0 0 0; color: white; padding: 100px 10px;}
+.site-banner { background-image: url('/images/header-bg.jpg') }
+.site-banner h1 { font-size: 45px; text-align: center; margin-bottom: 50px; color: white; }
+.blog-abstract { color: #A1E0FF; text-transform: capitalize; text-align: center; font-weight: lighter; font-size: 20px; line-height: 35px; }
+.site-author-link { float: right; }
+.site-header.isStuck { visibility: visible; }
+.site-header { background: #8DC2F8; height: 30px; border-top: 3px solid white; border-bottom: 3px solid white; width: 100%; visibility: hidden; }
+.site-title li { float: left; display: block; color: white; line-height: 30px; }
+.site-title li .arrow { float: right; height: 0; width: 0; margin-left: 15px; }
+.site-title-code { background: #193153;  padding-left: 15px; }
+.site-title-code .arrow { border: 15px solid #375E7F; border-left-color: #193153; }
+.site-title-art { background: #375E7F; }
+.site-title-art .arrow { border: 15px solid #2589D4; border-left-color: #375E7F;}
+.site-title-web { background: #2589D4; }
+.site-title-web .arrow { border: 15px solid #8DC2F8; border-left-color:  #2589D4;}
+.site-author-link { line-height: 30px; color: #193153; text-decoration: none; padding-right: 15px; }
+.site-body .inner, .site-footer .inner { width: 80%; max-width: 900px; margin-left: auto; margin-right: auto; }
+.site-body {  padding: 50px 0;}
+.blog-title { font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid black; margin-bottom: 10px; text-align: center; font-size: 35px; }
+.blog-post-tags { float: right; }
+.blog-post-tags a { color: silver; display: block; margin: 10px; }
+.blog-post-item-tags li { float: left;  }
+.blog-post-item { padding: 20px 0; border-bottom: 1px dashed silver;}
+.blog-post-item a { text-decoration: none; color: gray; }
+.post-pre-meta { color: silver; margin-bottom: 15px; font-weight: 100; }
+.site-footer { background: #494E52; padding: 100px 0; color: gray; border-top: 2px solid black; }
+.site-footer p { font-weight: lighter; padding: 10px 0; text-align: center; }
+.site-footer p a { text-decoration: none; color: silver; }
+.blog-post code { padding: 10px; }
+.blog-post code, code * { font-family: monospace !important; }
+.blog-post * { padding: 10px 0; line-height: 20px; font-size: 13px; }
+.highlight { border: #073642 8px solid; margin-bottom: 10px; overflow-x: auto; }
+.site-body .inner { margin: 50px auto; }
+blockquote { border-left: 2px solid silver; padding-left: 10px !important; background: white; }
+.blog-post h1 { font-size: 20px; }
+.blog-post p img { margin-left: auto; margin-right: auto; margin-bottom: 10px; display: block; max-width: 100%; }
+.blog-post table { border: 1px solid silver; }
+.blog-post table td, .blog-post table th { padding: 10px; text-align: left; }
+.blog-post p > code { background: #e8f1f6; border-radius: 3px; color: rgba(0,0,0,0.5); display: inline-block; font-size: 12px; margin-top: 5px; padding: 3px 7px;}
+.blog-post table th { background: #e8f1f6; }
+.blog-date { text-align: center; font-size: 13px; color: silver; }
 
-#content-wrapper h2 {
-    font-size: 1.6em;
-    color: #409EFF;
-    display: block;
-    border-bottom: 2px solid #409EFF;
-    padding-bottom: 0.2em;
-    margin: 1em 0;
-    text-align: center;
-}
-#content-wrapper h3 {
-    font-size: 1.4em;
-    color: black;
-    font-weight: bold;
-    margin-bottom: 0.6em;
-}
-#content-wrapper .content {
-    margin-bottom: 6em;
-}
-.date {
-    color:  #002B35
-    line-height: 30px;
-    font-size: 11px;
-}
-#toc {
-    margin: 0 auto;
-}
-#toc h1 {
-    font-size: 1.5em;
-    text-align: center;
-    margin-bottom: 1em;
-    border-bottom: 1px solid #EEE;
-    padding-bottom: 1em;
-}
-#toc a {
-    color: #0095DA;
-    margin: 10px 0 20px 20px;
-    display: block;
-}
-.content > .date {
-    float: left;
-}
-.post {
-    padding-top: 45px;
-}
-
-.post p {
-    padding: 10px 0;
-}
-
-.post img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    box-shadow: 0 0 4px 4px rgba(0,0,0,0.3);
-    max-width: 80%;
-    margin-bottom: 5px;
-}
-
-p code {
-    background: #EEEEEE;
-    border: 1px solid silver;
-    border-radius: 4px;
-    padding: 0 5px;
-}
-
-.post h1, .post h2 {
-    padding: 10px 0 5px 0;
-    font-size: 21px;
-    color: #409EFF;
-}
-.post p {
-    line-height: 1.5em;
-}
-.post pre {
-    padding: 10px;
-    margin-bottom: 10px;
-    overflow: auto;
-}
-
-.post code, code * {
-    font-family: 'Ubuntu Mono', sans-serif;
-}
-
-.post table thead {
-    background: #EEE;
-    border-bottom: 1px solid silver;
-}
-
-.post table td, table th {
-    padding: 10px;
-    border: 1px solid #EEE;
-}
-
-@media screen and (max-width: 700px) {
-    nav ul li a span { display: none; }
-    #content-wrapper { padding: 0 }
-    #content-wrapper .inner {
-        width: auto;
-        padding: 1em
-    }
-    #toc { width: 90%; }
-}
-
-blockquote {
-border-left: 2px solid silver;
-padding-left: 10px;
-background: white;
+@media all and (max-width: 500px) {
+    body * { font-family: 'Open Sans', sans-serif; box-sizing: border-box; line-height: 25px; font-size: 16px;  }
 }
