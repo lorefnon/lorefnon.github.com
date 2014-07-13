@@ -3,6 +3,12 @@ layout: post
 title: "Configuring Emacs as a productive development environment for Rails development."
 ---
 
+## Updates
+
+- The default keybindings have been updated based on the feedback from [Asok](https://github.com/asok), the author of the awesmoe `projectile-rails` package.
+
+---
+
 This post outlines some of the Emacs extensions (open source, of course) which can significantly ease the life of a Rails developer. While Rails is, by design, quite a productive framework, having the dev environment properly setup can multiply developer efficiency by an order of magnitude. Although almost all of this information is available online elsewhere, I nevertheless wanted to summarize my explorations in form of a basic guide to easily configure extensions I have found to be useful, during the course of my Rails projects. While the primary audience is a forgetful me from the future, I hope developers new to Rails or Emacs (or both) will find this helpful to get up and running with Emacs and Rails, without having to wade through reams of documentation right upfront. I have tried my best to link the appropriate authoritative resources, which may be helpful for people looking forward to customizing and extending the setup.
 
 While the setup below has been tested only in Linux Elementary, it should work for other Posix environments as well. Please ensure that you have got atleast [Emacs 24](http://www.gnu.org/software/emacs/#Obtaining) and can download packages through [`package.el`](https://github.com/technomancy/package.el). If you are not familiar with package management in emacs [Bozhidar Batsov](https://github.com/bbatsov) has presented [a great introduction](http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/). Adding the following snippet to your `~/.emacs` should provide access to [marmalade](http://marmalade-repo.org/) and [melpa](http://melpa.milkbox.net/#/) package archives:
@@ -138,9 +144,7 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-find-current-model</td>
-<td>
-<kbd>C-c r M</kbd>, <kbd>C-c r g m</kbd>
-</td>
+<td><kbd>C-c r M</kbd></td>
 <td>Go to a model connected with the current resource.</td>
 </tr>
 <tr>
@@ -150,9 +154,7 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-find-current-controller</td>
-<td>
-<kbd>C-c r C</kbd>, <kbd>C-c r g c</kbd>
-</td>
+<td><kbd>C-c r C</kbd></td>
 <td>Go to a controller connected with the current resource.</td>
 </tr>
 <tr>
@@ -162,9 +164,7 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-find-current-view</td>
-<td>
-<kbd>C-c r V</kbd>, <kbd>C-c r g v</kbd>
-</td>
+<td><kbd>C-c r V</kbd></td>
 <td>Go to a view connected with the current resource.</td>
 </tr>
 <tr>
@@ -174,9 +174,7 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-find-current-helper</td>
-<td>
-<kbd>C-c r H</kbd>, <kbd>C-c r g h</kbd>
-</td>
+<td><kbd>C-c r H</kbd></td>
 <td>Go to a helper connected with the current resource.</td>
 </tr>
 <tr>
@@ -185,15 +183,18 @@ Following is the list of commands and associated bindings taken from the home pa
 <td>Find a lib using <code>projectile-completion-system</code>.</td>
 </tr>
 <tr>
+<td>projectile-rails-find-feature</td>
+<td><kbd>C-c r f</kbd></td>
+<td>Find a feature using <code>projectile-completion-system</code>.</td>
+</tr>
+<tr>
 <td>projectile-rails-find-spec</td>
-<td><kbd>C-c r s</kbd></td>
+<td><kbd>C-c r p</kbd></td>
 <td>Find a spec using <code>projectile-completion-system</code>.</td>
 </tr>
 <tr>
 <td>projectile-rails-find-current-spec</td>
-<td>
-<kbd>C-c r S</kbd>, <kbd>C-c r g s</kbd>
-</td>
+<td><kbd>C-c r P</kbd></td>
 <td>Go to a spec connected with the current resource.</td>
 </tr>
 <tr>
@@ -203,15 +204,18 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-find-current-migration</td>
-<td>
-<kbd>C-c r N</kbd>, <kbd>C-c r g n</kbd>
-</td>
+<td><kbd>C-c r N</kbd></td>
 <td>Go to a migration connected with the current resource.</td>
 </tr>
 <tr>
 <td>projectile-rails-find-javascript</td>
 <td><kbd>C-c r j</kbd></td>
 <td>Find a javascript using <code>projectile-completion-system</code>.</td>
+</tr>
+<tr>
+<td>projectile-rails-find-stylesheet</td>
+<td><kbd>C-c r s</kbd></td>
+<td>Find a stylesheet using <code>projectile-completion-system</code>.</td>
 </tr>
 <tr>
 <td>projectile-rails-find-log</td>
@@ -245,18 +249,32 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-console</td>
-<td><kbd>C-c r r</kbd></td>
+<td>
+<kbd>C-c r ! c</kbd>, <kbd>C-c r r</kbd>
+</td>
 <td>Run <code>rails console</code> command in <code>inf-ruby</code> buffer.</td>
 </tr>
 <tr>
+<td>projectile-rails-server</td>
+<td>
+<kbd>C-c r ! s</kbd>, <kbd>C-c r R</kbd>
+</td>
+<td>Run <code>rails server</code>.</td>
+</tr>
+<tr>
 <td>projectile-rails-rake</td>
-<td><kbd>C-c r k</kbd></td>
+<td><kbd>C-c r ! r</kbd></td>
 <td>Select a rake task to run using <code>projectile-completion-system</code>.</td>
 </tr>
 <tr>
 <td>projectile-rails-generate</td>
-<td><kbd>C-c r t</kbd></td>
+<td><kbd>C-c r ! g</kbd></td>
 <td>Run <code>rails generate</code> command.</td>
+</tr>
+<tr>
+<td>projectile-rails-extract-region</td>
+<td><kbd>C-c r x</kbd></td>
+<td>Extract the selected region to a partial.</td>
 </tr>
 <tr>
 <td>projectile-rails-goto-file-at-point</td>
@@ -277,12 +295,12 @@ Following is the list of commands and associated bindings taken from the home pa
 </tr>
 <tr>
 <td>projectile-rails-goto-schema</td>
-<td><kbd>C-c r g h</kbd></td>
+<td><kbd>C-c r g d</kbd></td>
 <td>Go to <code>db/schema.rb</code> file.</td>
 </tr>
 <tr>
 <td>projectile-rails-goto-spec-helper</td>
-<td><kbd>C-c r g p</kbd></td>
+<td><kbd>C-c r g l</kbd></td>
 <td>Go to <code>spec/spec_helper.rb</code> file.</td>
 </tr>
 </tbody>
