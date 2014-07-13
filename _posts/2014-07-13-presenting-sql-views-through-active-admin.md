@@ -18,7 +18,7 @@ to refer to an SQL View rather than Rails view templates. Also the code is
 written for Rails 4 but should be usable with Rails 3 as well.
 
 For the sake of illustration we use an example database containing
-geographical information of Indian cities. The full code is available [here](http://lorefnon.me/rails/2014/07/13/presenting-sql-views-through-active-admin.html).
+geographical information of Indian cities. The full code is available [here](https://github.com/lorefnon/active_admin_view_demo).
 For brevity we just mention the generator commands and
 model classes here:
 
