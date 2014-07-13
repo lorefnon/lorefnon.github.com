@@ -3,11 +3,11 @@ layout: post
 title: "Presenting SQL views through ActiveAdmin"
 category: rails
 ---
-SQL Views are a handy feature that allow us to save a query whose results are
-computed/collated dynamically whenever the view is requested. Because the
-abstraction provided by a view is semantically close to a table we can leverage
+[SQL Views](http://en.wikipedia.org/wiki/View_(SQL) are a handy feature that allow us to
+save a query whose results are computed/collated dynamically whenever the view is requested.
+Because the abstraction provided by a view is semantically close to a table we can leverage
 ActiveRecord to interface with the view through a proxy model and use it to
-present the result set through ActiveAdmin interface.
+present the result set through [ActiveAdmin](http://activeadmin.info) interface.
 
 This can be very useful for reporting and visual inspection, especially by
 non technical staff.
@@ -15,7 +15,7 @@ non technical staff.
 The rest of the post elaborates on a simple approach for doing this through
 code examples. Please note that henceforth we use the term view
 to refer to an SQL View rather than Rails view templates. Also the code is
-written for Rails 4.2 but should be usable with Rails 3 as well.
+written for Rails 4 but should be usable with Rails 3 as well.
 
 For the sake of illustration we use an example database containing
 geographical information of Indian cities. The full code is available [here](http://lorefnon.me/rails/2014/07/13/presenting-sql-views-through-active-admin.html).
@@ -114,7 +114,7 @@ Now that we have a model, generating an ActiveAdmin resource is as simple as:
  
      rails g active_admin:resource StateDistrictCityViewProxy
 
-At this point upon visiting `http://localhost:3000/admin/state_district_city_view_proxies` we might have expected
+At this point upon visiting the index page in ActiveAdmin we might have expected
 a fancy paginated table but instead we are greeted with a not-so-helpful error:
 
 <img src="/images/err1.png"/>
