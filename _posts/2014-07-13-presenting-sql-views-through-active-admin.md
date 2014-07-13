@@ -133,7 +133,7 @@ assume that our `id` field is a primary key.
     > StateDistrictCityViewProxy.primary_key
     => nil
     
-We can somehow add a primary key to an SQL view, that is utterly pointless. However we can force ActiveRecord to use the `id` attribute
+We can not somehow add a primary key to an SQL view, that is utterly pointless. However we can force ActiveRecord to use the `id` attribute
 as primary key.
 
 {% highlight ruby %}
@@ -165,6 +165,9 @@ In config/application.rb:
 
 Next time we run `rake db:migrate` a `structure.sql` file will be generated that contains the SQL
 for generating our views.
+
+An alternative option is the gem [schema_plus](https://github.com/lomba/schema_plus) that augments ActiveRecord
+with support for views among other advanced database features.
 
 ## Edit/Delete actions
 
