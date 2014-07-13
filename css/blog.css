@@ -53,7 +53,7 @@ body {
 }
 body * { font-family: 'Open Sans', sans-serif; box-sizing: border-box; line-height: 20px; font-size: 13px;  }
 a { cursor: pointer; text-decoration: none; }
-.site-footer * , .site-banner *, .blog-title, .blog-post h1, .site-header * { font-family: 'Oswald'; }
+.site-footer * , .site-banner *, .blog-title, .blog-post h1, .blog-post h2, .blog-post h3, .site-header * { font-family: 'Oswald'; }
 .blog-title { line-height: 50px; }
 .blog-post-title { color: #3176C3; }
 .site-banner { background: #2589D4; margin: 2px 0 0 0; color: white; padding: 100px 10px;}
@@ -85,14 +85,15 @@ a { cursor: pointer; text-decoration: none; }
 .site-footer p { font-weight: lighter; padding: 10px 0; text-align: center; }
 .site-footer p a { text-decoration: none; color: silver; }
 .site-footer * { font-size: 20px; }
-.blog-post code { padding: 10px; }
 .blog-post code, code * { font-family: monospace !important; }
 .blog-post * { padding: 10px 0; line-height: 20px; font-size: 13px; }
 .highlight { border: #073642 8px solid; margin-bottom: 10px; overflow-x: auto; }
 .site-body .inner { margin: 50px auto; }
 blockquote { border-left: 2px solid silver; padding-left: 10px !important; background: white; }
 .blog-post h1 { font-size: 20px; }
+.blog-post h2 { font-size: 18px; }
 .blog-post p img { margin-left: auto; margin-right: auto; margin-bottom: 10px; display: block; max-width: 100%; }
+.blog-post p a { text-decoration: underline; }
 .blog-post table { border: 1px solid silver; }
 .blog-post table td, .blog-post table th { padding: 10px; text-align: left; }
 .blog-post p > code { background: #e8f1f6; border-radius: 3px; color: rgba(0,0,0,0.5); display: inline-block; font-size: 12px; margin-top: 5px; padding: 3px 7px;}

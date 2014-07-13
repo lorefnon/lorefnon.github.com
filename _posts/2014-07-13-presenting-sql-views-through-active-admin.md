@@ -18,8 +18,8 @@ to refer to an SQL View rather than Rails view templates. Also the code is
 written for Rails 4.2 but should be usable with Rails 3 as well.
 
 For the sake of illustration we use an example database containing
-geographical information of Indian cities. The full code is available in the
-following repository. For brevity we just mention the generator commands and
+geographical information of Indian cities. The full code is available [here](http://lorefnon.me/rails/2014/07/13/presenting-sql-views-through-active-admin.html).
+For brevity we just mention the generator commands and
 model classes here:
 
 {% highlight sh %}
@@ -114,7 +114,7 @@ Now that we have a model, generating an ActiveAdmin resource is as simple as:
  
      rails g active_admin:resource StateDistrictCityViewProxy
 
-At this point upon visiting http://localhost:3000/admin/state_district_city_view_proxies we might have expected
+At this point upon visiting `http://localhost:3000/admin/state_district_city_view_proxies` we might have expected
 a fancy paginated table but instead we are greeted with a not-so-helpful error:
 
 <img src="/images/err1.png"/>
@@ -197,7 +197,7 @@ end
 {% endhighlight %}
 
 Now that the quirks of our setup have been ironed out, feel free to go ahead and try it out.
-Of course SQL views are not the only solution and the aforementioned table could have been
+Of course SQL views are not the only solution for a problem like this and the aforementioned table could have been
 built entirely through DSLs provided by ActiveAdmin. But nonetheless, SQL views are something that
 most DBAs are already familiar with and is a hassle free setup. If you already have a legacy database
 with views or need to use views for other auxiliary purposes, the aforementioned approach may make
