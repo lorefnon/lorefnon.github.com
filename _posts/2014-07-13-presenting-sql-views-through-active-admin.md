@@ -3,7 +3,7 @@ layout: post
 title: "Presenting SQL views through ActiveAdmin"
 category: rails
 ---
-[SQL Views](http://en.wikipedia.org/wiki/View_(SQL) are a handy feature that allow us to
+<a href="http://en.wikipedia.org/wiki/View_(SQL)"> SQL Views </a> are a handy feature that allow us to
 save a query whose results are computed/collated dynamically whenever the view is requested.
 Because the abstraction provided by a view is semantically close to a table we can leverage
 ActiveRecord to interface with the view through a proxy model and use it to
