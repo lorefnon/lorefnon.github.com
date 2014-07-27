@@ -179,4 +179,4 @@ Now that we have reached the end of the post, it would be a good time to highlig
 1. Firstly, The array passed to `support_sti_for` function will have to be kept in sync with the class names, if the name of any model class changes in future.
 2. Secondly, While it is safe to add new entries to supported classes, their order can not be arbitrarily changed without running a data correction script first.
 
-This concludes our post. As always, any criticism or feedback is welcome.
+This concludes our post. The full source code is available at [Github](https://github.com/lorefnon/sti_optimization_demo.git). As always, any criticism or feedback is welcome.
