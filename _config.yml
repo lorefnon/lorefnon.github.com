@@ -2,11 +2,11 @@ name: Icicles of Thought
 description: Notes On Software Craftsmanship, Architecture Design And The Art Of Building Beautiful Abstractions, Primary Focus Being On Web Centric Platforms And Technologies.
 url: http://lorefnon.me
 markdown: redcarpet
-pygments: true
+highlighter: pygments
 post:
     template: _layouts/post.html
     extension: md
 page:
     template: _layouts/default.html
     extension: md
-editor: subl
+editor: emacs
