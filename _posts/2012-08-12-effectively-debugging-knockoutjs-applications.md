@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Effectively debugging KnockoutJS applications."
-description: ""
-category: 
-tags: []
+tags: [Javascript, KnockoutJS]
 ---
 This post aims to provide some explanation about the lifecycle of dynamic data-bindings in KnockoutJS to  ease debugging of KO applications .
 
@@ -19,7 +17,7 @@ KO relies on bindingHandlers to manage bindings. So corresponding to every built
 
 Let us checkout a simple example :
 
-{% highlight html %}	
+{% highlight html %}
 <html>
   <head>
     <script src="jquery-1.7.1.min.js"></script>

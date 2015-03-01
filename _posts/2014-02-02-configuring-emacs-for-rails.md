@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Configuring Emacs as a productive development environment for Rails development."
+tags: [Rails, Emacs]
 ---
 
 ## Updates
@@ -15,7 +16,7 @@ While the setup below has been tested only in Linux Elementary, it should work f
 
 {% highlight lisp %}
 (require 'package)
-(add-to-list 'package-archives 
+(add-to-list 'package-archives
     '("marmalade" .
       "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives

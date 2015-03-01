@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Decrypting an obfuscated font with OCR"
-tags: ruby ocr
+tags: [Ruby OCR]
 ---
 
 I recently came across [this site](the site http://protext.herokuapp.com/) which demostrates a strategy for copy protection using an obfuscated font. So basically if you copy the text in the header you will realize that text copied is not exactly what is visible on the screen. The text is presented through a font that maps the characters to glyphs of a different character and hence though the output is human readable the underlying text is not. This is presented as a means towards protecting the site from crawlers and scrapers. In the post below I intend to demonstrate that this is not as full-proof as non-technical folks would be led to believe.
@@ -22,10 +22,10 @@ Alternatively it can be manually downloaded through devtools:
 
 Now we need two gems:
 
-- [Tesseract-OCR](https://www.ruby-toolbox.com/projects/tesseract-ocr) - Ruby bindings for Tesseract OCR 
+- [Tesseract-OCR](https://www.ruby-toolbox.com/projects/tesseract-ocr) - Ruby bindings for Tesseract OCR
 - [Magic Title](https://www.ruby-toolbox.com/projects/magick_title) - to convert the text to image using a specific font.
 
-Quoting the [Tesseract OCR Website](http://code.google.com/p/tesseract-ocr/): 
+Quoting the [Tesseract OCR Website](http://code.google.com/p/tesseract-ocr/):
 
 > Tesseract is probably the most accurate open source OCR engine available. Combined with the Leptonica Image Processing Library it can read a wide variety of image formats and convert them to text in over 60 languages. It was one of the top 3 engines in the 1995 UNLV Accuracy test. Between 1995 and 2006 it had little work done on it, but since then it has been improved extensively by Google. It is released under the Apache License 2.0.
 

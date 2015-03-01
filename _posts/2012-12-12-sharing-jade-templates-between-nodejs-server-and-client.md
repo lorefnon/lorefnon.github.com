@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Sharing Jade templates between Node.js server and client"
-description: ""
-category: 
-tags: []
+tags: [Javascript, Jade, Node.js]
 ---
 
 Although there are several templating options available for the client eg. [Handlebars](http://www.lorefnon.com/blog/handlebarsjs.com), [Mustache](http://www.lorefnon.com/blog/mustache.github.com), [Pure](http://www.lorefnon.com/blog/beebole.com/pure/) etc. nevertheless, [Jade](http://www.lorefnon.com/blog/jade-lang.com/) is attractive in its own right.  Its succinct syntax is cleaner even than [Haml](http://www.lorefnon.com/blog/haml.info), which is arguably the predecessor and inspiration-source of all the minimalist whitespace sensitive templating systems. Using Node.js on the server offers an interesting opportunity to reuse the same servers on the server as well as client. This has been made particulary easy by the [numerous community contributions](https://github.com/search?q=jade&ref=commandbar) by Jade enthusiasts which I will attempt to highlight in this post.
@@ -17,7 +15,7 @@ Client-side rendering is made possible by a Jade feature called jade-runtime. On
 [Clientjade](https://github.com/jgallen23/clientjade) takes the process to next level of simplicity.  It is simple npm module which provides you with a command line utility to compile several jade templates into a single compiled javascript file. Compilation is as simple as:
 
     clientjade test1.jade test2.jade > templates.js
-	
+
 Once templates.js has been included in the page,  individual templates can be accessed using their filenames.
 
     jade.render($('#target'), 'test1', { name: 'Bob' });
@@ -29,13 +27,13 @@ While this entire procedure is very simple, inclusion of multiple compiled templ
 Fortunately there is a sister project [node-jade-amd](https://github.com/mysociety/node-jade-amd) which focusses on exactly this usage scenario. As you might expect, after installing the [jade-amd](https://github.com/mysociety/node-jade-amd) npm module you have a handy command line utility using which is as simple as :
 
     jade-amd --from <source-folder> --to <destination-folder>
-	
+
 The compiled templates have a dependency on jadeRuntime amd module which can be obtained by :
 
     jade-amd --runtime > jadeRuntime.js
 
 Then the compiled template can be used just like you would use any other amd module :
-{% highlight javascript %}	
+{% highlight javascript %}
 require([ 'templates/person' ],            // Compiled template AMD modules
     function(personTemplate) {
         var rendered_content = personTemplate({
@@ -49,4 +47,3 @@ Note that explitly requiring the runtime is not necessary because it is implicit
 If repeated manual recompilation feels like a headache, and you don’t already have a file watcher setup there is a connect middleware [jade-browser](https://github.com/storify/jade-browser) which exposes jade templates to the web browser and also provides a few additional features like express-like render function with partial handling. If you already using [grunt](http://www.lorefnon.com/blog/gruntjs.com), you can checkout the plugin [grunt-jade](https://github.com/phated/grunt-jade) .
 
 So jade is an immensely popular templating solution among Node.js developers and the benefit of this is that there are numerous compilation options available to fit into your development toolchain.  I hope this quick detour around jade was helpful.  There are multiple other similar projects aiming to solve similar scenarios.  The ones aforementioned, were a few that I recently used. Please feel free to express any opinions or criticisms. If there is a project with related objectives which is particularly noteworthy,  feel free to add a link.
-

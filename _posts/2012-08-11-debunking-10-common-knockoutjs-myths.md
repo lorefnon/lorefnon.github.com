@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Debunking 10 common KnockoutJS myths"
-description: ""
-categories:
-tags: javascript knockoutjs
+tags: [Javascript, KnockoutJS]
 ---
 
 It seems that among the developer community, there exist multiple misconceptions regarding KnockoutJS. This is particularly true for developers who are not familiar with the MVVM pattern or declarative style followed by Knockout. This posts aims to clarify some of these misconceptions.

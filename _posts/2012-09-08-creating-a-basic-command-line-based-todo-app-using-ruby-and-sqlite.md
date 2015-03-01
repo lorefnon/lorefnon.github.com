@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "Creating a basic command line based todo app using ruby and sqlite."
-description: ""
-category: 
-tags: []
+tags: [Ruby, Sqlite]
 ---
 
 This tutorial aims to demonstrate how Ruby can be used to create simple command line applications.  A basic familiarity with Ruby and SQLite is assumed. Also availability of a POSIX compliant system is assumed. Although it is quite possible to port this tutorial to other proprietary platforms, I will not make any effort in this regard because of sheer lack of interest. In the tutorial, we create a simple command line based Task management application which is persisted through a local sqlite database. Thanks to the awesome commander library for ruby, the usual legwork of dealing with command line arguments and managing flags is greatly simplified.
@@ -14,9 +12,9 @@ Hopefully you are already using RVM. So we begin by creating a new gemset :
     rvm gemset use task-trooper
 
 Running gem list presents us with the following :
-	
+
     *** LOCAL GEMS ***
-     
+
     bundler (1.1.5)
     rake (0.9.2.2)
     rubygems-bundler (1.0.3)
@@ -25,11 +23,11 @@ Running gem list presents us with the following :
 If you are not using rvm (though I would highly recommend you to use it) you would have to manually install bundler at this point.
 
 If you don’t already have SQLite, you will have to install it using your favourite package manager. Installation for ubuntu is as simple as :
-	
+
     sudo apt-get install sqlite3 libsqlite3-dev
 
 Let us create a project directory and a Gemfile for managing our ruby dependencies :
-	
+
     mkdir task-trooper
     cd task-trooper
     touch Gemfile
@@ -46,7 +44,7 @@ gem "sequel"
 and run **bundle install**.
 Commander is a ruby library for managing command line arguments. sqlite3 is the ruby adapter for sqlite. And since we don’t want to dabble with SQL strings, we use a simple ruby ORM – Sequel.
 If all goes well, the dependencies will be fetched and you should see something like this :
-	
+
     Fetching gem metadata from http://rubygems.org/........
     Using highline (1.6.14)
     Using commander (4.1.2)
@@ -63,7 +61,7 @@ For now our application code resides in a single file : task-trooper.rb
 require 'rubygems'
 require "bundler/setup"
 require 'commander/import'
- 
+
 program :name, "Task Trooper"
 program :version, '1.0.0'
 program :description, 'A simple command line based task manager'
@@ -73,29 +71,29 @@ The above code does not add a lot of functionality, it simply simply supplies th
     $ ruby task-trooper.rb
 
 This was expected. Let us see what help has to offer:
-	
+
     $ ruby task-trooper.rb --help
-     
+
       NAME:
-     
+
         Task Trooper
-     
+
       DESCRIPTION:
-     
+
         A simple command line based task manager
-     
+
       COMMANDS:
-     
+
         help                 Display global or [command] help documentation.
-     
+
       GLOBAL OPTIONS:
-     
+
         -h, --help
             Display help documentation
-     
+
         -v, --version
             Display version information
-     
+
         -t, --trace
             Display backtrace when an error occurs
 
@@ -108,13 +106,13 @@ require 'rubygems'
 require "bundler/setup"
 require 'commander/import'
 require 'sequel'
- 
+
 program :name, "Task Trooper"
 program :version, '1.0.0'
 program :description, 'A simple command line based task manager'
- 
+
 DB = Sequel.sqlite('tasks_db.db')
- 
+
 unless DB.table_exists? :tasks
   DB.create_table(:tasks) do
       primary_key :id
@@ -123,7 +121,7 @@ unless DB.table_exists? :tasks
   Boolean :completed
   end
 end
- 
+
 ds = DB[:tasks]
 {% endhighlight %}
 
@@ -143,23 +141,23 @@ The syntax and description methods simply provide the metadata which will be pre
 prints ‘Task created!’ and exits.
 
 Lets checkout if the command new is actually available.
-	
+
     $ ruby task-trooper.rb new
- 
+
     Task created!
- 
+
     $ ruby task-trooper.rb new --help
-     
+
       NAME:
-     
+
         new
-     
+
       SYNOPSIS:
-     
+
         task-trooper new
-     
+
       DESCRIPTION:
-     
+
         Creates a new task
 
 Great ! That works. Of course, at this point our task does not do anything. So let us add some functionality.
@@ -209,21 +207,21 @@ end
 {% endhighlight %}
 
 So, at this point basic creation and listing of tasks is available to us.
-	
+
     $ ruby task-trooper.rb new --title "Water plants" --description "The plants in the garden have to be watered before sundown."
     Task added !
-     
+
     $ ruby task-trooper.rb new
     Provide a title for the task :
     Add fertilizer
     Provide a description for the task :
     Add some fertilizer to the pot of roses.
     Task added !
-     
+
     $ ruby task-trooper.rb list
     Task [1] - <pending> : Water plants
     Task [2] - <pending> : Add fertilizer
-     
+
     Out of 2 Total Tasks : 2 pending, 0 completed.
 
 Next, we need a way to mark a task as completed :
@@ -270,7 +268,7 @@ command :show do |c|
     end
   end
 end
- 
+
 command :delete do |c|
   c.syntax = 'task-trooper delete <id>'
   c.description = 'Delete a task'
@@ -315,7 +313,7 @@ Gem::Specification.new do |s|
   s.authors = [ "Lorefnon" ]
   s.email = 'lorefnon@gmail.com'
   s.executables << 'task-trooper'
- 
+
   ['commander', 'sqlite3', 'sequel'].each do |dep|
     s.add_dependency dep
   end
@@ -330,9 +328,9 @@ config_dir = File.expand_path('~/.task-trooper')
 unless Dir[config_dir].length > 0
   Dir::mkdir(config_dir)
 end
- 
+
 DB = Sequel.sqlite("#{config_dir}/tasks.db")
- 
+
 unless DB.table_exists? :tasks
   DB.create_table(:tasks) do
     primary_key :id

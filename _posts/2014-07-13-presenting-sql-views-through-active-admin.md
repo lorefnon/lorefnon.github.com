@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Presenting SQL views through ActiveAdmin"
-category: rails
+tags: [Ruby, Rails, ActiveAdmin]
 ---
 <a href="http://en.wikipedia.org/wiki/View_(SQL)"> SQL Views </a> are a handy feature that allow us to
 save a query whose results are computed/collated dynamically whenever the view is requested.
@@ -111,7 +111,7 @@ We can take the proxy model for a test drive using IRB:
 {% endhighlight %}
 
 Now that we have a model, generating an ActiveAdmin resource is as simple as:
- 
+
      rails g active_admin:resource StateDistrictCityViewProxy
 
 At this point upon visiting the index page in ActiveAdmin we might have expected
@@ -132,7 +132,7 @@ assume that our `id` field is a primary key.
 
     > StateDistrictCityViewProxy.primary_key
     => nil
-    
+
 We can not somehow add a primary key to an SQL view, that is utterly pointless. However we can force ActiveRecord to use the `id` attribute
 as primary key.
 
@@ -176,7 +176,7 @@ oviously trigger an error. For example, here is what we end up with when clickin
 
 <img src="/images/err2.png"/>
 
-Let us declare the proxy model as readonly. 
+Let us declare the proxy model as readonly.
 
 {% highlight ruby %}
 class StateDistrictCityViewProxy < ActiveRecord::Base
@@ -195,7 +195,7 @@ Next we simply remove the irrelevant actions from the ActiveAdmin view:
 ActiveAdmin.register StateDistrictCityViewProxy do
 
   actions :index, :show
-  
+
 end
 {% endhighlight %}
 

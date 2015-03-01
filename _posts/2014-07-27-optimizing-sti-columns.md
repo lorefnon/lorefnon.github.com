@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Optimizing space taken by type column in Rails STI"
-category: rails
+tags: [Ruby, Rails, ActiveRecord]
 ---
 
 The [Single Table Inheritance](http://api.rubyonrails.org/classes/ActiveRecord/Base.html#label-Single+table+inheritance)

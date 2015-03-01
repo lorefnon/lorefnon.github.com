@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Allowing multiple emails for a user in Devise"
-tags: rails devise ruby
+tags: [Ruby, Rails, Devise, Integration]
 ---
 
 [Devise](https://github.com/plataformatec/devise) is an incredibly popular authorization gem for Rails. Unfortunately allowing a user to log in through multiple emails is not as straightforward as one might expect. This post outlines a way to do just that.
@@ -217,7 +217,7 @@ We edit the template to add nested form for emails:
 
 {% endhighlight %}
 
-Cocoon mandates a separate partial for email fields, which in our case is very simple: 
+Cocoon mandates a separate partial for email fields, which in our case is very simple:
 
 {% highlight erb %}
 <div class="nested-fields">
@@ -343,10 +343,10 @@ Four scenarios are possible:
 
 - **User is signing up for the first time through facebook.**
   In this case we just use the email obtained from facebook as the default email and register the user
-  
+
 - **User already has an account and has chosen to login through facebook for the first time**
   We can identify this situation if user's existing email is the same as the one he has used in Facebook. In this case we create a new UserIdentity for an existing user.
-  
+
 - **User had logged in using facebook before, using the same email**
   Nothing needs to be created. We just log the user in.
 
@@ -381,7 +381,7 @@ class User < ActiveRecord::Base
       elsif email.user == ui.user
         ui.user
       else
-        raise Exceptions::EmailConflict.new        
+        raise Exceptions::EmailConflict.new
       end
     elsif email.persisted?
       # Existing User, new identity
@@ -414,4 +414,3 @@ While this is true for many providers like Github, not all providers provide wit
 elaborate on those scenarios. A good way to handle such a case would be to direct a user to a profile completion after login where he/she can enter the email and warn them if an account already exists for that email.
 
 So we conclude the post with a functional setup that allows a user to have multiple emails associated with a devise account. Feel free to bug me if you face any issues. Any comments and suggestions are also welcome.
-

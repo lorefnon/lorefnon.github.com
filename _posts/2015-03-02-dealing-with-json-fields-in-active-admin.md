@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Dealing with JSON data in Active Admin"
+tags: [Ruby, Rails, ActiveAdmin]
 ---
 
 Many a times, depending on the requirements, it makes sense to store

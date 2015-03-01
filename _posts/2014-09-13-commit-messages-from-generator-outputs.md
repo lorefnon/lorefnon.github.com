@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Commit messages from generator outputs"
-tags: zsh
+tags: [zsh, Productivity Hacks]
 ---
 
 A practise I always follow while working with tools that generate code is that any code that is generated and not written by me is committed in isolation. This makes skimming through commit logs later easier because generators often generate many files upfront that wouldn't be edited until much later. So the subsequent commit wouldn't be littered with changes that aren't directly related to the actual operation mentioned in the commit message. Also while browsing through commit diffs keeping generated code in their own commits speeds up the reviewing process - because in most cases we already have an idea of what the generated could be, so it can be skipped.
@@ -20,7 +20,7 @@ is expressive enough for a commit message. A person familiar enough with the fra
 
 So I have created a simple zsh function which does exactly the above:
 
-    GC () 
+    GC ()
     {
       cmd="$@"
       output=$("$@")
@@ -37,9 +37,9 @@ GC will add all the generated code (please ensure you have a clean state before 
     commit 029cb2e60187a196d918a08563d95775d73f5100
     Author: Lorefnon <lorefnon@gmail.com>
     Date:   Sun Sep 14 00:58:03 2014 +0530
-     
+
         rails g model comment body:text commenter:string
-     
+
               invoke  active_record
               create    db/migrate/20140913192803_create_comments.rb
               create    app/models/comment.rb

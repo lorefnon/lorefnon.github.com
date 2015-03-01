@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Leveraging the strategy pattern in Rails - I"
-description: ""
-categories:
+tags: [Ruby, Rails, Design Patterns]
 ---
 
 # To begin with, what is strategy pattern ?
@@ -12,11 +11,11 @@ Quoting from [Wikipedia](http://en.wikipedia.org/wiki/Strategy_pattern),
 > the strategy pattern (also known as the policy pattern) is a software design
 > pattern that enables an algorithm's behavior to be selected at runtime.
 
-# So how does this help us ? 
+# So how does this help us ?
 
 Strategy pattern just helps us escape the soup of complex nested conditionals
 and model behavior selection in an object oriented fashion. To understand why this is
-required let us explore a fictional example: 
+required let us explore a fictional example:
 
 # An adventure
 
@@ -188,7 +187,7 @@ module Strategies
     def scoped_collection
       super || Book
     end
-    
+
     def applicable?
       false
     end
@@ -203,7 +202,7 @@ end
 {% highlight ruby %}
 module Strategies
   class DefaultRecommendationGeneration < RecommendationGeneration
-  
+
     def applicable?
 	  true
     end
@@ -224,7 +223,7 @@ end
 
 module Strategies
   class UserAdaptedRecommendationGeneration < RecommendationGeneration
-  
+
     def applicable?
       user.present?
     end
@@ -251,7 +250,7 @@ end
 
 module Strategies
   class PartnershipAdaptedRecommendationGeneration < RecommendationGeneration
-  
+
     # It is better to model buisness constraints in the persistance layer
 	# rather than relying on implicit assumptions.
 	#
@@ -294,7 +293,7 @@ class Book < ActiveRecord::Base
 	UserAdaptedRecommendationGeneration
 	DefaultRecommendationGeneration
   ]
-  
+
   def self.recommended_for user
     RECOMMENDATION_STRATEGIES.each do |strategy_class|
 	  strategy = strategy_class.new(user)

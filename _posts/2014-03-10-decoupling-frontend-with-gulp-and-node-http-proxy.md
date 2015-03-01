@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Decoupling your frontend development with gulp and http-proxy"
+tags: [Javascript, Gulp]
 ---
 
 In past developers have often relied on backend-specific toolchains for
@@ -8,14 +9,14 @@ web application frontends. Some examples would be [Rails asset pipeline](http://
 the legacy ant based toolchain for YUI. However recently node.js based tooling support
 for frontend technologies has significantly evolved and it is quite viable
 to use a node.js based toolchain for managing your frontend projects, even if
-the backend is not node.js, thus keeping the workflow decoupled from the backend. 
-    
+the backend is not node.js, thus keeping the workflow decoupled from the backend.
+
 This has multiple advantages, primary among them being that javascript
 developers can configure their tools using a language they already are
 familiar with without relying on server-side developers.
 
 The workflow I outline in this post utilizes [gulp](http://gulpjs.com/) and node module [http-proxy](https://www.npmjs.org/package/http-proxy).
-    
+
 Gulp is a build system. I prefer it over alternative task runners like grunt
 and mimosa because, as the gulp's website states quite succinctly :
 
@@ -37,7 +38,7 @@ served from the same domain.
 Let us say we have a javascript heavy dashboard which we would like to develop
 in a separate project. Here is the directory structure I'll use. Please note that following this
 directory structure is not mandatory and is mainly illustrative.
-          
+
 {% highlight bash %}
 project
   |_ gulpfile.js    # task runner configuration
@@ -106,7 +107,7 @@ var gulp = require('gulp'),
 gulp.task('clean', function(){
     gulp.src(['./dashboard/js/*', './dashboard/css/*'])
         .pipe(clean())
-})    
+})
 {% endhighlight %}
 
 The stream based based approach really shines when we use pre-processors for
@@ -118,7 +119,7 @@ var stylus = require('gulp-stylus')
 gulp.task('css', function(){
     gulp.src('./src/css/*.styl')
         .pipe(stylus())
-        .pipe(gulp.dest('./dashboard/css'))        
+        .pipe(gulp.dest('./dashboard/css'))
 })
 {% endhighlight %}
 
@@ -183,7 +184,7 @@ If you have been using livereload for a while then you probably have the browser
 extension for livereload. But in case you haven't you can use a middleware for
 express in the server.js file. This is especially convenient for testing on
 several browsers.
-        
+
 {% highlight javascript %}
 var app = connect()
     .use(connect.logger('dev'))

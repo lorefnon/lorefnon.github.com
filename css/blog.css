@@ -16,35 +16,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
-}
+	      content: '';
+	      content: none;
+          }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 body {
     background: white;
@@ -77,8 +77,7 @@ a { cursor: pointer; text-decoration: none; }
 .blog-title { font-weight: bold; padding-bottom: 10px; border-bottom: 2px solid black; margin-bottom: 10px; text-align: center; font-size: 35px; }
 .blog-post-tags { float: right; }
 .blog-post-tags a { color: silver; display: block; margin: 10px; }
-.blog-post-item-tags li { float: left;  }
-.blog-post-item { padding: 20px 0; border-bottom: 1px dashed silver;}
+.blog-post-item { padding: 20px 0; border-bottom: 1px dashed silver; position: relative; clear: both; }
 .blog-post-item a { text-decoration: none; color: gray; }
 .post-pre-meta { color: silver; margin-bottom: 15px; font-weight: 100; }
 .site-footer { background: #494E52; padding: 100px 0; color: gray; border-top: 2px solid black; }
@@ -109,3 +108,64 @@ blockquote { border-left: 2px solid silver; padding-left: 10px !important; backg
 @media all and (max-width: 500px) {
     body * { font-family: 'Open Sans', sans-serif; box-sizing: border-box; line-height: 25px; font-size: 16px;  }
 }
+
+
+.tags{
+    margin:0;
+    padding:0;
+    list-style:none;
+    height: 25px;
+}
+.tags li, .tags a{
+    float:right;
+    height:24px;
+    line-height:24px;
+    position:relative;
+    font-size:11px;
+    margin:5px 0;
+}
+
+.tags a{
+    margin-left:20px;
+    padding:0 10px 0 12px;
+    background:#0089e0;
+    color:#fff;
+    text-decoration:none;
+    -moz-border-radius-bottomright:4px;
+    -webkit-border-bottom-right-radius:4px;
+    border-bottom-right-radius:4px;
+    -moz-border-radius-topright:4px;
+    -webkit-border-top-right-radius:4px;
+    border-top-right-radius:4px;
+}
+.tags a:before{
+    content:"";
+    float:left;
+    position:absolute;
+    top:0;
+    left:-12px;
+    width:0;
+    height:0;
+    border-color:transparent #0089e0 transparent transparent;
+    border-style:solid;
+    border-width:12px 12px 12px 0;
+}
+.tags a:after{
+    content:"";
+    position:absolute;
+    top:10px;
+    left:0;
+    float:left;
+    width:4px;
+    height:4px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    background:#fff;
+    -moz-box-shadow:-1px -1px 2px #004977;
+    -webkit-box-shadow:-1px -1px 2px #004977;
+    box-shadow:-1px -1px 2px #004977;
+}
+.tags a:hover{background:#555;}
+
+.tags a:hover:before{border-color:transparent #555 transparent transparent;}

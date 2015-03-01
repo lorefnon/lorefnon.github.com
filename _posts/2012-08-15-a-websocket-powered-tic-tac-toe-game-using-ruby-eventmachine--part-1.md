@@ -1,9 +1,7 @@
 ---
 layout: post
 title: "A Websocket powered Tic tac toe game using Ruby EventMachine – Part 1"
-description: ""
-category: 
-tags: []
+tags: [Ruby, EventMachine, Websockets]
 ---
 
 
@@ -24,9 +22,9 @@ To see if em-websocket is working without hassles, run the following minimal web
 {% highlight ruby %}
 require 'eventmachine'
 require 'em-websocket'
- 
+
 EventMachine.run {
- 
+
     EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
         ws.onopen {
           puts "WebSocket connection open"
@@ -41,11 +39,11 @@ EventMachine.run {
 What this code does is it creates a socket-server which listens at localhost:8080 . Callbacks have been provided for open and close events, so when a client creates a connection or a connection gets closed the associated callbacks print an appropriate message to the terminal.
 
 run the webserver with :
-	
+
     ruby server.rb
 
 The server should go into an event-loop without any errors. Now fire up your browser’s javascript console (or NodeJS console) and try :
-	
+
     socket = new WebSocket("ws://localhost:8080")
 
 If all goes well, it should return true and the message “Websocket connection open” should be displayed in the terminal.
@@ -54,14 +52,14 @@ So far, so good. But the main purpose of a server is to relay data to the client
 
 {% highlight ruby %}
 EventMachine.run {
- 
+
     EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
         ws.onopen {
           puts "WebSocket connection open"
           # publish message to the client
           ws.send "Hello Client"
         }
- 
+
         ws.onclose {
           puts "Connection closed"
         }
@@ -107,29 +105,29 @@ Let us organize our code in an object oriented fashion :
 
 {% highlight ruby %}
 class GameController
- 
+
   def add_player player
     # if partner is available
     #   pair_up with partner
     # else
     #   enqueue partner
   end
- 
+
   def pair_up player, partner
     # create a new game
     # appoint one of the player as first, and start the game
   end
- 
+
   def end_game game, players
     # re-allocate partner if someone is waiting
     # ... call add_player - and a new game proceeds
   end
 end
- 
+
 EventMachine.run {
   @gc = GameController.new
   EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
- 
+
     ws.onmessage do |req|
       req = JSON.parse(req)
       case req['action']
@@ -140,7 +138,7 @@ EventMachine.run {
         player.notify ({:success => true, :id => player.id})
       end
     end
- 
+
   end
 }
 {% endhighlight %}
@@ -177,7 +175,7 @@ class Game
     # notify the players about the game
     start
   end
- 
+
   def start
     @players.each do |id, player|
       ws = player.socket
@@ -203,7 +201,7 @@ Now that basic overview of the code is clear, implementing the details is not ve
 require 'eventmachine'
 require 'em-websocket'
 require 'json'
- 
+
 class Player
   attr_accessor :score, :socket
   attr_reader :id
@@ -216,7 +214,7 @@ class Player
     @socket.send JSON.dump msg_hash
   end
 end
- 
+
 class Game
   attr_reader :id
   def initialize player1, player2, game_controller
@@ -234,7 +232,7 @@ class Game
     player2.notify({:msg => "Opponent's turn"})
     @next_player = player1.id
   end
- 
+
   def start
     @players.each do |id, player|
       ws = player.socket
@@ -244,7 +242,7 @@ class Game
         puts "id received : #{msg['id']}"
         puts "players : #{@players.to_json}"
         initiator = @players[msg['id']]
- 
+
         puts "initiator ===> ", initiator.to_json
         partner = find_partner initiator
         case msg['action']
@@ -255,7 +253,7 @@ class Game
             update_state msg
             @next_player = partner.id
             update_gamestate partner
- 
+
             if victorious?
               initiator.notify ({ :msg => "You win" })
               partner.notify({ :msg => "You lose" })
@@ -273,7 +271,7 @@ class Game
       end
     end
   end
- 
+
   def validate_move msg
     res = {:success => true}
     if msg['id'] != @next_player
@@ -284,19 +282,19 @@ class Game
     end
     res
   end
- 
+
   def update_state msg
     @state[msg['x']][msg['y']] = msg['id']
   end
- 
+
   def update_gamestate player
     player.notify ({:game_state => @state })
   end
- 
+
   def find_partner player
     @players.each { |id, pl| return pl unless  id == player.id }
   end
- 
+
   def victorious?
     def teq a,b,c
       a != 0 and a == b and b ==c
@@ -307,28 +305,28 @@ class Game
       return true if teq @state[0][i], @state[1][i], @state[2][i]
       i = i+1
     end
- 
+
     return true if teq @state[0][0], @state[1][1], @state[2][2]
     return true if teq @state[2][0], @state[1][1], @state[0][2]
     false
   end
- 
+
   def finished?
     not @state[0].include? (0) and
       not @state[1].include? (0) and
       not  @state[2].include? (0)
   end
- 
+
 end
- 
+
 class GameController
- 
+
   def initialize
     @games = {}
     @free_players = []
     @engaged_players = []
   end
- 
+
   def add_player player
     puts "Adding player : #{player.id}"
     partner = @free_players.pop
@@ -343,14 +341,14 @@ class GameController
       pair_up player, partner
     end
   end
- 
+
   def pair_up player, partner
     puts "Starting game between player #{player.id} and #{partner.id}"
     game = Game.new player, partner, self
     @games[game.id] = game.id
     game.start
   end
- 
+
   def end_game game, players
     @games[game.id] = nil
     players.each do |id, player|
@@ -358,11 +356,11 @@ class GameController
     end
   end
 end
- 
+
 EventMachine.run {
   @gc = GameController.new
   EventMachine::WebSocket.start(:host => "0.0.0.0", :port => 8080) do |ws|
- 
+
     ws.onmessage do |req|
       req = JSON.parse(req)
       case req['action']
@@ -373,7 +371,7 @@ EventMachine.run {
         player.notify ({:success => true, :id => player.id})
       end
     end
- 
+
   end
 }
 
