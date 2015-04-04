@@ -199,7 +199,9 @@ In similar fashion more graphs can be added and additional dashboards can be set
 
 ## Conclusion
 
-This concludes this post, in which we have explored how a InfluxDB a time series datastore, can be used to save metrics from our rails application and how we can query this data store and derive actionable insights. Also we explored creation of dashboards using Grafana to visualize these metrics in near-real time.
+This concludes this post, in which we have setup a basic development setup of InfluxDB and explored how a time series datastore can be used to save metrics from our Rails application and how we can query this data store and derive actionable insights. Also we explored creation of dashboards using Grafana to visualize these metrics in near-real time.
+
+Our proof of concept setup, however is not suitable for production deployments with large volumes of data, in which case we would want to utilize advanced cluster management features of InfluxDB. Fortunately InfluxDB documentation already has a lot of [helpful information](http://influxdb.com/docs/v0.8/clustering/setup.html) on scaling up production deployment which is only expected to mature over time. There are also [commercial options](https://customers.influxdb.com/) available for hosted InfluxDB which I encourage users to [try out](https://customers.influxdb.com/users/sign_up) and evaluate.
 
 ## Where to go from here
 
