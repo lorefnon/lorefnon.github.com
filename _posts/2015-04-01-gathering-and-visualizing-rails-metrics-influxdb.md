@@ -4,30 +4,18 @@ title: "Gathering and Visualizing metrics from your Rails application using Infl
 tags: [Ruby, Rails, InfluxDB]
 ---
 
-InfluxDB is a distributed time series database. It is a specialized data store
-for saving large volumes of timestamped event data and this makes it especially
-suited for storing metrics, lifecycle events and analytics. Fortunately there
-is an `influxdb-rails` gem maintained by the InfluxDB team, which provides an
-excellent integration with Rails and makes it easy to save various metrics from
-a rails application to InfluxDB and visualize it through frontends like
-[Graphana](TODO FIXME).
+## Overview
 
-The rest of this post, explores various aspects of a simple setup in which
-we build a rudimentary cms based site and monitor it using influxdb and graphana.
-Eventually we also briefly look into generation of actionable reports using
-InfluxDB APIs. We don't assume prior familiarity with InfluxDB, and elaborate on
-relevant aspects of time series databases on the go, but familiarity
-with Rails is assumed.
+InfluxDB is a distributed time series database. It is a specialized data store for saving large volumes of timestamped event data and this makes it especially suited for storing metrics, lifecycle events and analytics. The `influxdb-rails` gem, maintained by the InfluxDB team, facilitates integration with Rails and makes it easy to save various metrics from a rails application to InfluxDB and visualize it through frontends like [Graphana](TODO FIXME).
 
-This post also assumes that you have InfluxDB installed as per the official
-[installation instructions](http://influxdb.com/docs/v0.8/introduction/installation.html).
-On mac you can just run `brew install influxdb` if you already have [Homebrew](http://brew.sh/) setup.
+The rest of this post, explores various aspects of a simple setup in which we build a rudimentary cms based site and monitor it using influxdb and graphana. We don't assume prior familiarity with InfluxDB, and elaborate on relevant aspects of time series databases on the go, but familiarity with Rails is assumed.
 
-Next, we bootstrap a simple rails application using the
-[Comfortable mexican sofa](https://github.com/comfy/comfortable-mexican-sofa)
-CMS to quickly setup a site with a few pages we can tinker with. This is not really
-important, but it simply helps us work with a reasonably more realistic setup than
-a typically crud ui generated through scaffolds.
+This post also assumes that InfluxDB is installed as per the official [installation instructions](http://influxdb.com/docs/v0.8/introduction/installation.html) with default configuration. If installation has been customized eg. ports have been changed, the configurations provided to `influxdb-rails` will have to be adapted accordingly. On mac influxdb can be installed using [Homebrew](http://brew.sh/) : `brew install influxdb`.
+
+
+## Setting up a basic application
+
+Next, we bootstrap a simple rails application using the [Comfortable mexican sofa](https://github.com/comfy/comfortable-mexican-sofa) CMS to quickly setup a site with a few pages we can tinker with. This is not really important, but it simply helps us work with a reasonably more realistic setup than a typically crud ui generated through scaffolds.
 
 {% highlight bash %}
 rails new influxdb-cms-demo --database=mysql
@@ -40,22 +28,19 @@ gem 'comfortable_mexican_sofa', '~> 1.12.0'
 gem 'influxdb-rails'
 {% endhighlight %}
 
-And after running `bundle install`, we need to run:
+Setting up CMS requires an additional step:
 
 {% highlight bash %}
 rails generate comfy:cms
 {% endhighlight %}
 
-This plugs in the content management facilities provided by CMS. And then:
+Setting up InfluxDB adapter also requires an additional step:
 
 {% highlight bash %}
 rails g influxdb
 {% endhighlight %}
 
-This sets up basic metrics aggregation facilities offered by influxdb.
-The default configuration options in the generated `influxdb-rails.rb`
-initializer correspond with the default settings of influxdb. If you
-have configured InfluxDB
+The default configuration options are available in the generated `influxdb-rails.rb` and they correspond to the default settings of influxdb.
 
 {% highlight ruby %}
 InfluxDB::Rails.configure do |config|
@@ -71,50 +56,35 @@ InfluxDB::Rails.configure do |config|
 end
 {% endhighlight %}
 
-The last three lines signify the names of time series where the
-corresponding metrics would be stored, and we will use the same
-when querying the time series database.
+The last three lines signify the names of time series where the corresponding metrics would be stored, and we will use the same when querying the time series database.
 
-The aforementioned database "rails" is not something that is automatically
-created for us, so if we try to run our application at this point, our logs
-will contain errors about database not being found. Let us head over to
-the InfluxDB dashboard, which runs on port 8083 by default, to setup the
-database. Unless we have configured the default settings, We can just
-visit [localhost:8083](http://localhost:8083). If all goes well, we will
-be greeted with a similar landing page:
+Before our application can start dispatching metrics to InfluxDB the database "rails" specified in the above configuration file would have to be created. InfluxDB admin provides a means to do that using the GUI. The admin interface may be accessed by visiting: [localhost:8083](http://localhost:8083)
 
 ![InfluxDB landing page](/images/influxdb_landing_page.png)
 
-The default username/password combination is root/root, which is something
-we would want to change if we are deploying this in a production setting.
+The default username/password combination is root/root, which is not advisable for production use.
 
-Creating a database is pretty simple - for now we just fill in the database name
-and don't bother with the remaining details.
+The only option that is particularly relevant is database name: which we would have to change to "rails".
 
 ![InfluxDB creating database](/images/influxdb_create_database.png)
 
-This would be a good point to run `db:migrate` and visit the CMS
-dashboard `/admin`
+This would be a good point to run `db:migrate` and visit the CMS dashboard `/admin`
 
-Once we have created a new site, and added a few pages, it is time to
-checkout our InfluxDB dashboard and checkout what metrics have
-been automagically aggregated for us.
+Once a new site has been bootstrapped, we can rapidly create multiple pages through the CMS admin interface. These steps are not elaborated here because the guided CMS admin makes it pretty trivial. Once a few pages have been setup, we have some metrics to explore in InfluxDB.
 
 ![Add a new page in CMS](/images/new_page_cms.png)
 
+## Data exploration
 
-In the list of databases, we should have an option to `Explore Data`. Let
-us go ahead and click that:
+In the list of databases, we should have an option to `Explore Data`. Let us go ahead and click that:
 
 ![InfluxDB database list](/images/influxdb_database_list.png)
 
-We will be presented with a simple interface to read and write points (which
-are essentially multi-column timestamped datasets).
+We will be presented with a simple interface to read and write points (which are essentially multi-column timestamped datasets).
 
 ![InfluxDB Query interface](/images/influxdb_query_interface.png)
 
-This page also highlights an interesting aspect of InfluxDB - though it is not
-a relational database, it does provide an SQL like language to query the database.
+This page also highlights an interesting aspect of InfluxDB - though it is not a relational database, it does provide an SQL like language to query the database.
 
 A basic query might look something like this:
 
@@ -124,9 +94,114 @@ Besides controllers, we can also run similar queries for our timeseries for view
 ![InfluxDB Select All from View Query](/images/influxdb_select_all_from_view.png)
 ![InfluxDB Select All from DB Query](/images/influxdb_select_all_from_db.png)
 
-This concludes our first post in which we try out InfluxDB and see how easy it
-is to aggregate basic metrics out of the box, without having to write a lot of code.
+## Configuring additional lifecycle events
 
-In the subsequent posts, we elaborate on more advanced metrics aggreagation,
-by using custom criteria and by specific custom metrics. We will also go beyond the basic visualization provided by the dashboard and will see how to create
-professional grade dashboards using Grafana.
+In a real applications we would want to aggregate additional metrics of our choosing. A popular solution for dispatching and subscribing to various lifecycle events that ruby community has developed is `ActiveSupport::Notifications` which Rails internally uses.
+
+Using `ActiveSupport::Notifications` we can subscribe to lifecycle events of a rails application and add callbacks to dispatch these metrics to InfluxDB.
+
+For example if we would like to track the execution times of queries in InfluxDB we can write an initializer:
+
+{% highlight ruby %}
+ActiveSupport::Notifications.subscribe('sql.active_record') do |name, start, finish, id, payload|
+  InfluxDB::Rails.client.write_point(name, { value: (finish-start), start: start, finish: finish })
+end
+{% endhighlight %}
+
+The value attribute is something that InfluxDB admin will use to generate graph by default. We can query this just like the previous queries:
+
+![InfluxDB Query lifecycle event](/images/influxdb_lifecycle_event_query.png)
+
+More lifecycle events of Rails application can be found in the [Rails guides](http://edgeguides.rubyonrails.org/active_support_instrumentation.html).
+
+In addition, the instrumentation API can be used directly to create a custom lifecycle events. Here is an example taken from the [official documentation](http://api.rubyonrails.org/classes/ActiveSupport/Notifications.html) that outlines how a part of application code can be wrapped into an instrumented block which we could subscribe to in an identical fashion.
+
+{% highlight ruby %}
+ActiveSupport::Notifications.instrument('render', extra: :information) do
+  render text: 'Foo'
+end
+{% endhighlight %}
+
+While the InfluxDB admin interface provides a convenient dashboard to visualize the metrics, it is not ideal for complex, comparative or realtime visualizations. For such use cases it is better to resort to dedicated solutions like Grafana.
+
+## Setting up Grafana
+
+While Grafana releases binary downloads for most major versions of linux, there isn't one available for Mac. And neither is it available from Homebrew. However installation from the sources is straightforward if you have Go. It is important that the version of Go is correct (1.4 +) otherwise installation fails with totally incomprehensible errors. The version of Go available from Homebrew is outdated - however Google provides [installers](https://golang.org/doc/install) which work like a charm. Once Go is setup properly, the [installation steps](https://github.com/grafana/grafana#building-the-backend) for Grafana are straightforward.
+
+Another hiccup is that when running the web interface, Grafana uses the same default port as Rails (3000). To alleviate that we need to edit configuration file dev.ini in `$GOPATH/src/github.com/grafana/grafana/conf` and specify an alternate port
+
+{% highlight ini %}
+app_mode = development
+
+[server]
+router_logging = false
+http_port = 8000
+
+[log]
+level = Trace
+{% endhighlight %}
+
+Once this is configured running `./grafana web` from grafana source directory, should run the webserver on port 8000:
+
+![Grafana server log](/images/grafana_startup_log.png)
+
+Now we can browse the Grafana dashboard and provide the default login details admin/admin. Again it is not advisable to use this in production.
+
+![Grafana Login](/images/grafana_login.png)
+
+The default dashboard is pretty bare:
+
+![Grafana Home page](/images/grafana_home.png)
+
+Adding a new dashboard is straightforward:
+
+![Grafana : Adding a dashboard](/images/grafana_add_dashboard.png)
+
+Once we have a dedicated dashboard for our Rails application we can start adding graphs:
+
+![Grafana : Add Graph](/images/grafana_add_graph.png)
+
+It would be probably surprising to see a great looking graph instantly generated. After all no influxdb/rails specific configuration has been done yet, so what data is being presented ?
+
+![Grafana : Default Graph](/images/grafana_test_graph.png)
+
+Once we try to edit the data source, it would become clear that the graph being presented is infact coming from a dummy data source
+
+![Grafana : Edit Graph](/images/grafana_edit_graph.png)
+![Grafana : Configure Graph Data Source](/images/grafana_configure_graph_data_source.png)
+
+At this point, because InfluxDB data source hasn't been configured hence no other data source is available :
+
+![Grafana : Missing Data Source](/images/grafana_singular_data_source.png)
+
+The sidebar has a section for data sources that can be used for this task:
+![Grafana : Sidebar](/images/grafana_sidebar_close_up.png)
+![Grafana : Add data source](/images/grafana_add_data_source.png)
+
+While adding a data source it is of particular importance the version of InfluxDB is correct in the type field. Rest of the fields in form are self explanatory - It is advisable that in production Auth is configured to protect against intrusion.
+
+![Grafana : Edit data source](/images/grafana_edit_data_source.png)
+
+Now in the graph editor multiple data sources should be available:
+
+![Grafana : Multiple data sources](/images/grafana_multiple_data_source_selector.png)
+
+We can now specify the InfluxDB query to be made in the `Metrics` section:
+![Grafana : Specify Metric](/images/grafana_metric_specification.png)
+
+Since we don't have a lot of historical data at this point, for inspection we can adjust the time range to something recent:
+![Grafana : Range Selection](/images/grafana_range_selection.png)
+
+The dummy graph should now be replaced with a real visualization of our metric
+![Grfana : Metric Output](/images/grafana_metric_output.png)
+
+In similar fashion more graphs can be added and additional dashboards can be set up as per requirements.
+
+## Conclusion
+
+This concludes this post, in which we have explored how a InfluxDB a time series datastore, can be used to save metrics from our rails application and how we can query this data store and derive actionable insights. Also we explored creation of dashboards using Grafana to visualize these metrics in near-real time.
+
+## Where to go from here
+
+- [InfluxDB documentation](http://influxdb.com/docs/)
+- [Grafana Documentation](http://docs.grafana.org/)
