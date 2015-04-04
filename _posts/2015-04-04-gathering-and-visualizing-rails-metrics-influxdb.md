@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Gathering and Visualizing metrics from your Rails application using InfluxDB"
-tags: [Ruby, Rails, InfluxDB]
+tags: [Ruby, Rails, InfluxDB, Grafana]
 ---
 
 ## Overview
