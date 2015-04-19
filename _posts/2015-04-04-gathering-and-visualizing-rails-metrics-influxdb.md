@@ -6,9 +6,9 @@ tags: [Ruby, Rails, InfluxDB, Grafana]
 
 ## Overview
 
-InfluxDB is a distributed time series database. It is a specialized data store for saving large volumes of timestamped event data and this makes it especially suited for storing metrics, lifecycle events and analytics. The `influxdb-rails` gem, maintained by the InfluxDB team, facilitates integration with Rails and makes it easy to save various metrics from a rails application to InfluxDB and visualize it through frontends like [Graphana](TODO FIXME).
+InfluxDB is a distributed time series database. It is a specialized data store for saving large volumes of timestamped event data and this makes it especially suited for storing metrics, lifecycle events and analytics. The `influxdb-rails` gem, maintained by the InfluxDB team, facilitates integration with Rails and makes it easy to save various metrics from a rails application to InfluxDB and visualize it through frontends like [Grafana](http://grafana.org/).
 
-The rest of this post, explores various aspects of a simple setup in which we build a rudimentary cms based site and monitor it using influxdb and graphana. We don't assume prior familiarity with InfluxDB, and elaborate on relevant aspects of time series databases on the go, but familiarity with Rails is assumed.
+The rest of this post, explores various aspects of a simple setup in which we build a rudimentary cms based site and monitor it using influxdb and grafana. We don't assume prior familiarity with InfluxDB, and elaborate on relevant aspects of time series databases on the go, but familiarity with Rails is assumed.
 
 This post also assumes that InfluxDB is installed as per the official [installation instructions](http://influxdb.com/docs/v0.8/introduction/installation.html) with default configuration. If installation has been customized eg. ports have been changed, the configurations provided to `influxdb-rails` will have to be adapted accordingly. On mac influxdb can be installed using [Homebrew](http://brew.sh/) : `brew install influxdb`.
 
