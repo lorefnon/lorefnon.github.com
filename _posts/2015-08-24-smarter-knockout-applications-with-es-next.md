@@ -6,7 +6,7 @@ tags: [Javascript, KnockoutJS]
 
 # Overview
 
-This post is an outline of ES6/7 features that we can leverage today in our knockout based applications to make them more maintainable.
+This post is an outline of ES6/7 features that we can leverage today in our [Knockout](http://knockoutjs.com) based applications to make them more maintainable.
 
 Thanks to powerful and reliable transpilers like [Babel](http://babeljs.io) we don't have to wait for mass adoption across browser vendors, to try out features from next generation javascript. While this post is essentially an overview written in a specific context, ie. Knockout applications, I encourage readers to refer to excellent online resources like [Javascript Allonge](https://leanpub.com/javascriptallongesix) for a broader coverage.
 
@@ -70,7 +70,7 @@ class SomeViewModel {
 
 ## Imports for code organization:
 
-JS imports are the new standard approach to deal with modularization in JS code, and I can only anticipate [more](https://angular.io/) and [more](http://aurelia.io/) libraries moving to them from older patterns like AMD or CommonJS. Babel can transpile imports to require invocations that follow AMD/CommonJS syntax so you can move to newer syntax progressively and continue using your existing loaders/bundlers.
+JS imports are the new standard approach to deal with modularization in JS code, and I can only anticipate [more](https://angular.io/) and [more](http://aurelia.io/) libraries moving to them from older patterns like [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) or [CommonJS](http://wiki.commonjs.org/wiki/CommonJS). Babel can transpile imports to require invocations that follow AMD/CommonJS syntax so you can move to newer syntax progressively and continue using your existing loaders/bundlers. My personal recommendation for bundler is [webpack](http://webpack.github.io/) which offers interesting features like [Code splitting](http://webpack.github.io/docs/code-splitting.html) out of the box.
 
 ## Template strings
 
