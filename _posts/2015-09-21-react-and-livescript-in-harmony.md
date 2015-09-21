@@ -6,7 +6,7 @@ tags: [Javascript, ReactJS]
 
 # Overview
 
-[Livescript](http://livescript.net/) is a programming language that compiles to readable javascript (similar to coffeescript) and provides language level facilities to [encourage](http://livescript.net/#inspiration) functional programming. [React.js](https://facebook.github.io/react/) is a user interface library from [facebook](https://facebook.com) that uses [intelligent heuristics](http://calendar.perfplanet.com/2013/diff/) for efficient DOM updates, simplifying the process of building data driven applications. This post outlines how the two can play well together, and tries to demostrate how livescript allows us write much more compact and succinct code.
+[Livescript](http://livescript.net/) is a programming language that compiles to readable javascript (similar to coffeescript) and provides language level facilities to [encourage](http://livescript.net/#inspiration) functional programming. [React.js](https://facebook.github.io/react/) is a user interface library from [facebook](https://facebook.com) that uses [intelligent heuristics](http://calendar.perfplanet.com/2013/diff/) for efficient DOM updates, simplifying the process of building data driven applications. This post outlines how the two can play well together, and tries to demostrate how livescript allows us write much more compact and succinct code. Basic familiarity with both of them is assumed.
 
 To begin with let us see what a basic component looks like:
 
@@ -34,7 +34,7 @@ React.render el, document.get-element-by-id \application-container
 
 <img src="/images/Screen Shot 2015-09-21 at 12.42.18 pm.png">
 
-This is very similar to what you would have written if you were using vanilla javascript. The only primary advantages are whitespace based indentation, removal of braces and parenthesis (that are pervasive in js) and implicit returns. However we can do much better than this.
+This is very similar to what we would have written if we were using vanilla javascript. The only primary advantages are indentation based nesting, elimination of a lot of superfluous syntax - braces and parenthesis and implicit returns. However we can do much better than this.
 
 Because Livescript was forked from Coffeescript, it inherits Coffeescript's class syntax which we can use to extend `React.Component`. However the benefits of doing so are pretty-much marginal.
 
@@ -46,7 +46,7 @@ class ContactList extends React.Component
       React.create-element \li, null, contact.name
 ```
 
-One thing that we may notice is that the above code does not use JSX. While yes, it is [possible](https://github.com/facebook/react/issues/47#issuecomment-18877423) to use jsx with livescript using backticks to escape xml constructs and then passing the generated js to babel, it is a hack we better forgo. As we will see soon, livescript native constructs allow for much more succinct expressions than the xml boilerplate that comes jsx.
+One thing that we may notice is that the above code does not use [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html). While yes, it is [possible](https://github.com/facebook/react/issues/47#issuecomment-18877423) to use JSX with livescript using backticks to escape xml constructs and then passing the generated js to babel, it is a hack we better forgo. As we will see soon, livescript native constructs allow for much more succinct expressions than the xml boilerplate that comes JSX.
 
 Livescript's feature that almost everything is a expression is particularly helpful when we have conditional logic in our dom generation code.
 
@@ -147,6 +147,8 @@ You may be tempted to further shorten the functions taking advantage of livescri
 ```
 
 But I strongly recommend against doing that, because having the arguments specified in the function signature upfront enhances readability.
+
+Also note that the top down construction flow composition can also be realized in javascript using Ramda's `pipe` but livescript just makes it simpler by providing a language level operator.
 
 For simpler components (which are just responsible for presenting something passed as props, and do not need lifecycle methods etc.) it may be useful to define a micro-component builder:
 
@@ -251,5 +253,3 @@ React.render el, document.get-element-by-id \application-container
 ```
 
 Apart from getting rid of null for attribute hashes, hyperscript is particularly useful for shorter syntax for class names and ids. Also it insulates your codebase against changes in the DOM builder API, which have happened in past.
-
-
