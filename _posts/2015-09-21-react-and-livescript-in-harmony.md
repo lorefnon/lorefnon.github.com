@@ -1,7 +1,7 @@
 ---
 layout: post
 title: React and Livescript in harmony
-tags: [Javascript, ReactJS]
+tags: [Javascript, ReactJS, Functional Programming]
 ---
 
 # Overview
