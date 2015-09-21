@@ -126,7 +126,7 @@ React.render el, document.get-element-by-id \application-container
 
 <img src="/images/Screen Shot 2015-09-21 at 2.15.15 pm.png">
 
-You may be tempted to further shorten the functions taking advantage of livescript's default argument `it`:
+It may be tempting to further shorten the functions taking advantage of livescript's default argument `it`:
 
 ```livescript
   render-avatar: ->
@@ -252,4 +252,4 @@ React.render el, document.get-element-by-id \application-container
 
 ```
 
-Apart from getting rid of null for attribute hashes, hyperscript is particularly useful for shorter syntax for class names and ids. Also it insulates your codebase against changes in the DOM builder API, which have happened in past.
+Apart from getting rid of null for attribute hashes, hyperscript is particularly useful for shorter syntax for class names and ids. Also it insulates our codebase against changes in the DOM builder API, which have happened in past.
