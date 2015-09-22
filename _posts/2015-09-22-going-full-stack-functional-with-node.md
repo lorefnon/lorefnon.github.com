@@ -148,6 +148,8 @@ We can use livescript for our migration files as well. To change the extension o
 for i in $(ls); do mv $i $(echo $i | sed 's/.js/.ls/'); done
 ```
 
+A simple migration to create our users table will look something like this:
+
 `db/migrations/20150921193358_create_users.ls`
 
 {% highlight livescript linenos %}
@@ -169,6 +171,30 @@ module.exports =
   down: (knex)->
     knex.schema.drop-table \users
 {% endhighlight %}
+
+Interestingly this is one of the use cases where livescript's back arrow operator comes in handy. So the above could be equivalently written as:
+
+{% highlight livescript linenos %}
+module.exports =
+
+  up: (knex)->
+    t <- knex.schema.create-table \users
+
+    t.integer \id
+    t.string \username
+    t.string \email
+
+    t.index \username
+    t.index \email
+
+    t.timestamps!
+    t.primary \id
+
+  down: (.schema.drop-table \users)
+
+{% endhighlight %}
+
+We also used livescript's implicit access feature to make our down migration much more compact.
 
 Now if our migrations run without error, then our users table is set up properly and we can re-run the tests:
 
