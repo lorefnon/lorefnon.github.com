@@ -100,6 +100,8 @@ In the spirit of TDD we will now create our first test. Before we do so we need 
 --compilers ls:livescript
 ```
 
+The first line configures the user interface of the reporter, the second line configures a library called `co-mocha` which allows us to use generators instead of functions in mocha tests, which are passed to [co](https://github.com/tj/co) underneath allowing us to `yield` promises in our tests, thereby significantly [simplifying](http://davidwalsh.name/async-generators) the testing of asynchronous code. This is something that will become more evident as we write our tests.
+
 We also need to expose a configured knex instance through a module
 
 `db/support/knex.ls`:
