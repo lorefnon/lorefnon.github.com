@@ -104,15 +104,15 @@ We also need to expose a configured knex instance through a module
 
 `db/support/knex.ls`:
 
-```livescript
+{% highlight livescript linenos %}
 require! knex
 
 module.exports = knex require('../../knexfile')[process.env.NODE_ENV]
-```
+{% endhighlight %}
 
 Now comes our test:
 
-```livescript
+{% highlight livescript linenos %}
 require! {
   assert
   '../../../db/support/knex': knex
@@ -130,7 +130,7 @@ describe \schema, ->
         assert.ok yield knex.schema.has-table \users
         for column in <[id email username created_at updated_at]>
           assert.ok yield knex.schema.has-column \users, column
-```
+{% endhighlight %}
 
 Now we can go back to the command line, run our tests and watch it bleed:
 
@@ -152,7 +152,7 @@ for i in $(ls); do mv $i $(echo $i | sed 's/.js/.ls/'); done
 
 `db/migrations/20150921193358_create_users.ls`
 
-```livescript
+{% highlight livescript linenos %}
 module.exports =
 
   up: (knex)->
@@ -170,7 +170,7 @@ module.exports =
 
   down: (knex)->
     knex.schema.drop-table \users
-```
+{% endhighlight %}
 
 Now if our migrations run without error then our users table is set up properly and we can re-run the tests:
 
