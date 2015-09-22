@@ -210,4 +210,4 @@ NODE_ENV=test node_modules/.bin/mocha test/db/schema/users.ls
 
 <img src="/images/movie_explorer_schema_test_success.png">
 
-So we bootstrapped a knex and created our first table, using livescript and we have our first passing test. So far so good, the next part will focus on setting up authentication, after which we will move on to the client side application. Any suggestions/feedback is very much welcome.
+So we bootstrapped knex, created our first table using livescript and we have our first passing test. So far so good, the next part will focus on setting up authentication, after which we will move on to the client side application. Any suggestions/feedback is very much welcome.
