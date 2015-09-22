@@ -118,16 +118,12 @@ require! {
   '../../../db/support/knex': knex
 }
 
-require! {
-  assert
-  '../../../db/support/knex': knex
-}
-
 describe \schema, ->
   describe \users, ->
     describe \table, ->
       specify 'should exist', ->*
         assert.ok yield knex.schema.has-table \users
+      specify 'should have relevant columns', ->*
         for column in <[id email username created_at updated_at]>
           assert.ok yield knex.schema.has-column \users, column
 {% endhighlight %}
@@ -172,7 +168,7 @@ module.exports =
     knex.schema.drop-table \users
 {% endhighlight %}
 
-Now if our migrations run without error then our users table is set up properly and we can re-run the tests:
+Now if our migrations run without error, then our users table is set up properly and we can re-run the tests:
 
 ```
 NODE_ENV=test knex migrate:latest
