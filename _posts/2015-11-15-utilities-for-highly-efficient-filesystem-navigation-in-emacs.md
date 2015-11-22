@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Utilities for highly efficient filesystem navigation in emacs"
+title: "Utilities for efficient filesystem navigation in emacs"
 description: ""
 category: 
 tags: [emacs, helm]
