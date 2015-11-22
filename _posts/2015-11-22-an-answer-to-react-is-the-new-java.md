@@ -34,6 +34,10 @@ The upcoming Web Component technology is fueled by the widespread need for true 
 
 JSX is a custom language extension alright but it is not mandatory for using React. It is [fairly easy](http://jamesknelson.com/learn-raw-react-no-jsx-flux-es6-webpack/) to use vanilla javascript and benefit from all the features of React. In fact it is also easy to use React with other AltJS languages like [Coffeescript](http://blog.vjeux.com/2013/javascript/react-coffeescript.html), [Livescript](http://lorefnon.me/2015/09/21/react-and-livescript-in-harmony.html) and [Typescript](https://github.com/Asana/typed-react).
 
+While I agree that without JSX, the code is much more verbose - there are solutions like [React hyperscript](https://github.com/mlmorg/react-hyperscript) that let you express the DOM structure within javascript, or [React Templates](https://github.com/wix/react-templates) and [React Jade](https://github.com/jadejs/react-jade) which allow you to use external templates with React.
+
+Also there is a [draft specification](https://facebook.github.io/jsx/) for JSX in place and some other frameworks have already [started](https://github.com/insin/msx) adopting it.
+
 ## About open standards
 
 ### Web Components
