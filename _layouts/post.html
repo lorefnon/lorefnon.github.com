@@ -2,7 +2,6 @@
 layout: default
 ---
 
-
 <ul class="tags">
   {% for tag in page.tags %}
   <li><a href='#'>{{ tag }}</a></li>
@@ -17,7 +16,7 @@ layout: default
 
 {% if page.tldr %}
 <div class="tldr-summary">
-  <div class="tldr-header"> tl;dr </div>
+  <div class="tldr-header"> TL;DR </div>
   <div class="tldr-body">
     {{ page.tldr | markdownify }}
   </div>

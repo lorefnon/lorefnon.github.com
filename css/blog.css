@@ -172,17 +172,20 @@ blockquote > * { padding: 0; }
 .tags a:hover:before{border-color:transparent #555 transparent transparent;}
 
 .tldr-header {
-    background: #2C74C6;
-    float: left;
+    background-color: #FFD28B;
     color: white;
     padding: 5px 10px;
-    margin-left: -10px;
-    margin-right: 10px;
-    font-weight: 900;
-    font-family: arial;
-    /* font-size: 1rem; */
 }
 
 .tldr-summary {
     background: lemonchiffon;
+    padding: 0;
+}
+
+.tldr-body {
+    padding: 5px 10px;
+}
+
+.tldr-summary code {
+    background: white !important;
 }
