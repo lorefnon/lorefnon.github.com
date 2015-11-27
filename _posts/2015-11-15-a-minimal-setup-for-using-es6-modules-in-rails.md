@@ -2,10 +2,7 @@
 layout: post
 title: "A minimal setup for using ES6 modules in Rails"
 tags: ['Rails', 'Javascript', 'ES6']
----
-
-**TL;DR** `browserify-rails` + `babelify` is a hassle-free solution if you are planning to use ES6 modules with sprockets, compared to the officially recommended `sprockets-es6`.
-
+tldr: "`browserify-rails` + `babelify` is a hassle-free solution if you are planning to use ES6 modules with sprockets, compared to the officially recommended `sprockets-es6`."
 ---
 
 While ES6 adoption is progressively improving across browsers, and the sprockets team is planning to integrate ES6 features into Rails asset pipeline in near future, using a widely popular transpiler: [Babel](https://babeljs.io) we can leverage many of those features right away. The specific aspect of interest for this post is ES6 modules feature which provides a standardized module system for javascript.
@@ -39,6 +36,7 @@ gem "browserify-rails"
 ```
 
 as well as a `package.json` in project root:
+
 
 ```javascript
 {

@@ -3,6 +3,7 @@ description: Notes On Software Craftsmanship, Architecture Design And The Art Of
 url: http://lorefnon.me
 markdown: redcarpet
 highlighter: pygments
+pygments_options: ['lineanchors', 'linenos=table']
 post:
     template: _layouts/post.html
     extension: md
