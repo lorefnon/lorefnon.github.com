@@ -325,7 +325,9 @@ class PostsController < ApplicationController
 
 While so far everything works pretty well, we may want to hook into navigation events for greater flexibility. This may be useful for sending events to analytics service or for highlighting specific parts of page. The latter is useful because in some cases when the part replaced is very small, user might not immediate notice a quick change in the page content.
 
-For instance `spfdone` event is invoked after the asynchronous update has been applied to the page.
+For instance `spfdone` event is invoked after the asynchronous update has been applied to the page. We can attach handlers to this event just like any other event, and hook custom logic:
+
+<img src="/images/2015-11-26/spfdone.png">
 
 Let us highlight the listing of our posts using CSS 3 animations when loaded asynchronously:
 
