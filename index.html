@@ -10,7 +10,23 @@ layout: default
     <div class='lf-l-sidebar-body'>
       <h1 class="lf-slab lf-site-header"> lorefnon.me </h1>
       <div class="lf-sidebar-posts-container">
-        <h2 class="lf-posts-container-header"> Recent posts </h2>
+        <h2 class="lf-slab lf-posts-list-header lf-sec-header"> Recent posts </h2>
+        <ul class="lf-posts-list">
+          {% for post in site.posts %}
+          <li class="lf-posts-list-item">
+            <div class="lf-posts-list-item-spacer" ></div>
+            <span class="lf-posts-list-item-date">{{ post.date | date_to_string }} </span>
+            <a href="{{ post.url }}"> <h2 class="lf-slab lf-posts-list-item-title"> {{ post.title }} <h2> </a>
+
+            <ul class="lf-tags">
+              {% for tag in post.tags %}
+              <li><a href='#'>{{ tag }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+
       </div>
       <div class="lf-sidebar-posts-footer">
       </div>
