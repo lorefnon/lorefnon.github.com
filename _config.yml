@@ -4,10 +4,13 @@ url: http://lorefnon.me
 markdown: redcarpet
 highlighter: pygments
 pygments_options: ['lineanchors', 'linenos=table']
+gems:
+  - jekyll-paginate
 post:
-    template: _layouts/post.html
-    extension: md
+  template: _layouts/post.html
+  extension: md
 page:
-    template: _layouts/default.html
-    extension: md
+  template: _layouts/default.html
+  extension: md
 editor: emacs
+paginate: 5

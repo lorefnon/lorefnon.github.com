@@ -189,3 +189,110 @@ blockquote > * { padding: 0; }
 .tldr-summary code {
     background: white !important;
 }
+
+// ====
+
+.lf-site-wrapper {
+    position: absolute;
+    left: 0; right: 0; bottom: 0; top: 0;
+}
+
+.lf-sidebar-main {
+    position: absolute;
+    top: 0; bottom: 0;
+}
+
+.lf-sidebar-posts-container {
+    position: absolute;
+    overflow: auto;
+    left: 0; right: 0; top: 100px; bottom: 2rem;
+}
+
+.lf-posts-container-header {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+}
+
+.lf-sidebar-posts-footer {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 2rem;
+}
+
+.lf-l-sidebar-main {
+    left: 0;
+    background: #29343A;
+    width: 350px;
+}
+
+.lf-l-sidebar-fringe {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2.5rem;
+    background: #23749E;
+}
+
+.lf-l-sidebar-body {
+    position: absolute;
+    left: 2.5rem; right: 0; top: 0; bottom: 0;
+    background: #00AAF3;
+}
+
+.lf-r-sidebar-main {
+    right: 0;
+    background: #1D73A0;
+    width: 2.5rem;
+}
+
+.lf-site-wrapper {
+    background: white;
+}
+
+.lf-slab {
+    font-family: 'Arvo', serif;
+}
+
+.lf-primary-header {
+    font-size: 3rem;
+}
+
+.lf-site-header {
+    color: white;
+    margin: 30px 1rem 1rem 1rem;
+    border-bottom: 1px solid white;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    padding-bottom: 1rem;    
+}
+
+.lf-site-body {
+    position: absolute;
+    overflow: auto;
+    top: 0;
+    left: 350px;
+    right: 40px;
+    bottom: 0;
+}
+
+.lf-site-body-edge {
+    height: 14px;
+    background: url('/images/paper_edge.png');
+    position: absolute;
+    top: 0; left: 0; right: 0;
+}
+
+.lf-body-cols {
+    position: absolute;
+    left: 0; right: 0; bottom: 0; top: 14px;
+    overflow: auto;
+}
+
+.lf-body-col {
+    max-width: 33%;
+    min-width: 200px;
+    float: left;
+}
+
+.lf-body-cols {
+    min-width: 600px;
+}
