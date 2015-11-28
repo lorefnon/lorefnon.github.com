@@ -49,7 +49,7 @@ While I appreciate the freedom associated with open source licenses, I would rat
 
 ## Integrating SPF.js with Rails
 
-The rest of the post outlines the steps required to integrate SPF.js with a rails application. The code for this tutorial is available in Github.
+The rest of the post outlines the steps required to integrate SPF.js with a rails application. The code for this tutorial is available in [Github](https://github.com/lorefnon/rails-spfjs-demo).
 
 We will create a dummy blog application. But hey, since this is just a demo application, we can get away with a little [Forgery](https://github.com/sevenwire/forgery):
 
