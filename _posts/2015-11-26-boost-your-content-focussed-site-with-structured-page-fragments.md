@@ -20,7 +20,7 @@ While yes, turbolinks does enjoy being a part of the default Rails stack, but fr
 
 SPF.js allows you to just fetch the parts of the page that really need updating. The GIF below, also taken from the official site, explains this much better:
 
-<table>
+<table style="margin: auto">
   <thead>
     <tr>
       <th> Full page re-rerendering </th>
@@ -158,7 +158,7 @@ So now that we have our dummy posts in place, we just need to show them:
 </div>
 ```
 
-The above templates have nothing particularly characteristic. If you would have written them yourself, I guess you would have implemented something very similar. I have presented above to particularly highlight that the way you structure your views does not need to be drastically altered to use spf.js. Hence it is easy to take your existing sites and start using spf.js.
+The above templates have nothing particularly characteristic. If you would have written them yourself, I guess you would have implemented something very similar. I have presented above to particularly highlight that the way you structure your views does not need to be drastically altered to use SPF.js. Hence it is easy to take your existing sites and start using SPF.js.
 
 Our dummy blog looks something like this now:
 
@@ -166,7 +166,7 @@ Our dummy blog looks something like this now:
 
 ## Including SPF
 
-Next step for us is to include spf.js in the page. For that we will just add the cdn link to our layout. Other methods of including are available [here](https://github.com/youtube/spfjs#download).
+Next step for us is to include SPF.js in the page. For that we will just add the cdn link to our layout. Other methods of including are available [here](https://github.com/youtube/spfjs#download).
 
 After this inclusion our template might look something like this:
 
@@ -197,7 +197,7 @@ After this inclusion our template might look something like this:
 
 ## Making navigation links SPF aware
 
-However just initializing spf.js does not magically ajaxify all navigation links. In fact by so far spf.js does not alter the navigation in any way. We need to explicitly enable spfjs for links for which our server knows how to server partial content. For spf to process a link, it should have the class 'spf-link'. Let us start with our navigation links:
+However just initializing SPF.js does not magically ajaxify all navigation links. In fact by so far SPF.js does not alter the navigation in any way. We need to explicitly enable SPFjs for links for which our server knows how to server partial content. For SPF to process a link, it should have the class 'spf-link'. Let us start with our navigation links:
 
 ```erb
 <% if @page > 0 %>
@@ -208,13 +208,13 @@ However just initializing spf.js does not magically ajaxify all navigation links
 <% end %>
 ```
 
-One great feature of spf.js is that it handles graceful degradation. So, since we haven't done anything on the server side to generate partial contents, SPF will try to make an ajax request to server (with the special query parameter spf=navigate) and once that response format does not match what SPF expects, it will allow a full page reload.
+One great feature of SPF.js is that it handles graceful degradation. So, since we haven't done anything on the server side to generate partial contents, SPF will try to make an ajax request to server (with the special query parameter spf=navigate) and once that response format does not match what SPF expects, it will allow a full page reload.
 
 ## Server side handling for SPF
 
 Let us move on to server side handling:
 
-As we have previously mentioned that spf sends an ajax request using spf=navigate query parameter. We can detect that in our controller and send out a special response that only includes the parts of the page we need to update:
+As we have previously mentioned that SPF sends an ajax request using spf=navigate query parameter. We can detect that in our controller and send out a special response that only includes the parts of the page we need to update:
 
 ```ruby
 class PostsController < ApplicationController
@@ -301,7 +301,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Now all we have to do is prefix the names of our spf specific templates with `spf_` and we are done. Our `spf_index.json.erb` remains unchanged.
+Now all we have to do is prefix the names of our SPF specific templates with `spf_` and we are done. Our `spf_index.json.erb` remains unchanged.
 
 ## Navigation hooks
 
