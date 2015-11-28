@@ -14,6 +14,10 @@ SPF.js a lightweight javascript library to incorporate dynamic page updates that
 
 While for complex dynamic sites which have a significant amount of client side logic, I still recommend adopting a client side javascript framework, but for content focussed sites, a nifty utility like SPF.js can be very useful.
 
+## Why not good old js.erb templates ?
+
+While Rails allows us to render server generated javascript templates, using them to generate dynamic page updates is a bit cumbersome for most scenarios. Especially you have to handle page url updates manually, scroll back the pages manually etc. None of them are very complex concerns, but having a library deal with such cross cutting concerns is much more elegant IMHO.
+
 ## What about turbolinks ?
 
 While yes, turbolinks does enjoy being a part of the default Rails stack, but frankly, it has always seemed like a half baked product. While turbolinks does improve the experience over full page reloads, behind the scenes it still loads the full page content.
@@ -302,6 +306,20 @@ end
 ```
 
 Now all we have to do is prefix the names of our SPF specific templates with `spf_` and we are done. Our `spf_index.json.erb` remains unchanged.
+
+We can clean up the action and remove SPF specific code:
+
+```ruby
+class PostsController < ApplicationController
+
+  def index
+    @page = params[:page].to_i
+    @num_pages = 1000
+    @posts = 10.times.map { fake_post_summary }
+  end
+
+...
+```
 
 ## Navigation hooks
 
