@@ -220,26 +220,26 @@ blockquote > * { padding: 0; }
 }
 
 .lf-l-sidebar-main {
-    left: 0;
+    right: 0;
     background: #29343A;
     width: 350px;
 }
 
 .lf-l-sidebar-fringe {
     position: absolute;
-    top: 0; left: 0; bottom: 0;
+    top: 0; right: 0; bottom: 0;
     width: 2.5rem;
     background: #23749E;
 }
 
 .lf-l-sidebar-body {
     position: absolute;
-    left: 2.5rem; right: 0; top: 0; bottom: 0;
+    right: 2.5rem; left: 0; top: 0; bottom: 0;
     background: #00AAF3;
 }
 
 .lf-r-sidebar-main {
-    right: 0;
+    left: 0;
     background: #1D73A0;
     width: 2.5rem;
 }
@@ -248,8 +248,8 @@ blockquote > * { padding: 0; }
     background: white;
 }
 
-.lf-slab {
-    font-family: 'Arvo', serif;
+.lf-slab, .lf-slab * {
+    font-family: 'Arvo', serif !important;
 }
 
 .lf-primary-header {
@@ -260,7 +260,6 @@ blockquote > * { padding: 0; }
     color: white;
     margin: 30px 1rem 1rem 1rem;
     border-bottom: 1px solid white;
-    font-size: 2.5rem;
     line-height: 2.5rem;
     padding-bottom: 1rem;    
     clear: both;
@@ -270,8 +269,8 @@ blockquote > * { padding: 0; }
     position: absolute;
     overflow: auto;
     top: 0;
-    left: 350px;
-    right: 40px;
+    right: 350px;
+    left: 40px;
     bottom: 0;
 }
 
@@ -289,13 +288,23 @@ blockquote > * { padding: 0; }
 }
 
 .lf-body-col {
-    max-width: 33%;
-    min-width: 200px;
     float: left;
 }
 
 .lf-body-cols {
     min-width: 600px;
+}
+
+.lf-body-col {
+    height: 100%;
+}
+
+.lf-body-col-primary {
+    width: 70%;
+}
+
+.lf-body-col-secondary {
+    width: 30%;
 }
 
 .lf-posts-list-item { 
@@ -319,6 +328,8 @@ blockquote > * { padding: 0; }
 
 .lf-posts-list-header {
     margin: 0 1rem;
+    color: white;
+    padding-bottom: 5px;
 }
 
 .lf-posts-list-item {
@@ -334,7 +345,49 @@ blockquote > * { padding: 0; }
 }
 
 .lf-sec-header {
-    color: white;
     font-size: 1.5rem;
+    line-height: 1.5rem;
 }
 
+.lf-tert-header {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+}
+
+.lf-pri-header {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+}
+
+.lf-body-col-content {
+    margin-top: 100px;
+    padding-right: 1px;
+    padding-left: 1rem;
+}
+
+.lf-body-section {
+    margin: 1rem 0;
+    padding: 0 1rem;
+    border-left: 4px solid #ddd;
+}
+
+.lf-soc-link-list {
+    margin-top: 1rem;
+}
+
+.lf-soc-link-list li {
+    float: left;
+    margin-right: 1rem;
+}
+
+.lf-soc-link-list img {
+    height: 30px;
+    width: 30px;
+}
+
+.lf-site-body-footer {
+    text-align: center;
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding-bottom: 1rem;
+}

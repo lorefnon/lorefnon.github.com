@@ -8,25 +8,10 @@ layout: default
     <div class='lf-l-sidebar-fringe'>
     </div>
     <div class='lf-l-sidebar-body'>
-      <h1 class="lf-slab lf-site-header"> lorefnon.me </h1>
+      <h1 class="lf-slab lf-site-header lf-pri-header"> lorefnon.me </h1>
       <div class="lf-sidebar-posts-container">
         <h2 class="lf-slab lf-posts-list-header lf-sec-header"> Recent posts </h2>
-        <ul class="lf-posts-list">
-          {% for post in site.posts %}
-          <li class="lf-posts-list-item">
-            <div class="lf-posts-list-item-spacer" ></div>
-            <span class="lf-posts-list-item-date">{{ post.date | date_to_string }} </span>
-            <a href="{{ post.url }}"> <h2 class="lf-slab lf-posts-list-item-title"> {{ post.title }} <h2> </a>
-
-            <ul class="lf-tags">
-              {% for tag in post.tags %}
-              <li><a href='#'>{{ tag }}</a></li>
-              {% endfor %}
-            </ul>
-          </li>
-          {% endfor %}
-        </ul>
-
+        {% include posts_list.html %}
       </div>
       <div class="lf-sidebar-posts-footer">
       </div>
@@ -35,36 +20,49 @@ layout: default
   <div class='lf-site-body'>
     <div class='lf-site-body-edge'>
     </div>
-    <div class="lf-body-cols">
+    <div class="lf-body-cols lf-slab">
 
-      <div class="lf-body-col lf-col-1">
-        <h1 class="lf-slab"> Hi, </h1>
-        <p class="lf-slab">
-          I am a full stack web developer and polyglot programmer enthusiastic about dynamic languages, open web technologies and system orchestration.
-        </p>
-        <p class="lf-slab">
-          I am usually found lurking around Macbooks in dark caffeinated environments
-        </p>
+      <div class="lf-body-col lf-body-col-primary">
+        <div class="lf-body-col-content">
+          <h1 class="lf-pri-header"> Hi, </h1>
+          <div class="lf-sec-header lf-body-section">
+            I am Gaurab Paul,
+          </div>
+          <div class="lf-sec-header lf-body-section">
+            a full stack web developer and polyglot programmer enthusiastic about dynamic languages, open web technologies and system orchestration.
+          </div>
+          <div class="lf-sec-header lf-body-section">
+            I am usually found lurking around Macbooks in caffeine rich environments
+          </div>
+        <div>
+          <div class="lf-tert-header"> Connect with me: </div>
+          <ul class="lf-soc-link-list">
+            <li> <a target="_blank"  href="https://in.linkedin.com/in/gaurab-paul-a2472921"><img src="/images/linkedin.png"></a></li>
+            <li> <a target="_blank" href="https://twitter.com/lorefnon"><img src="/images/twitter.png"></a></li>
+          </ul>
+        </div>
+        </div>
       </div>
 
-      <div class="lf-body-col lf-col-2">
-        <div>
-          Connect with me:
-          <ul>
-            <li> <img src="/images/linkedin.png"></li>
-            <li> <img src="/images/twitter.png"></li>
+      <div class="lf-body-col lf-body-col-secondary">
+        <div class="lf-body-col-content">
+          <h1 class="lf-pri-header"> Also, </h1>
+          <div class="lf-sec-header lf-body-section">
+            checkout open source projects I am working on ...
+          </div>
+          <div class="lf-tert-header"> Find me on: </div>
+          <ul class="lf-soc-link-list">
+            <li> <a target="_blank" href="https://github.com/lorefnon"><img src="/images/github.png"></a></li>
           </ul>
         </div>
       </div>
 
-      <div class="lf-body-col lf-col-3">
-        <h1 class="lf-slab"> Or, </h1>
-        <p>
-          Or checkout open source projects I am working on ...
-        </p>
-      </div>
-
     </div>
+
+    <div class="lf-site-body-footer">
+      <img src="/images/contributions.svg"/>
+    </div>
+
   </div>
   <div class='lf-sidebar-main lf-r-sidebar-main'>
   </div>
